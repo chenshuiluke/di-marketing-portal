@@ -1,0 +1,22 @@
+.main {
+    background-color: white;
+    padding-bottom: 5rem;
+}
+
+.form {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+
+.line {
+    width: 1px;
+    background: rgba(128, 128, 128, 0.301);
+    height: 50px;
+    margin: 0 auto;
+}
+
+.short-link {
+    cursor: pointer;
+    color: #007bff;
+}

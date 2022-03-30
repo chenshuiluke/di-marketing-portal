@@ -1,0 +1,148 @@
+import React, { useState } from "react";
+import Layout from "../components/Layout";
+import * as styles from "./../components/modules/url-builder.module.css";
+import Select from "react-select";
+import axios from "axios";
+
+const sourceOptions = [
+  { value: "google", label: "google" },
+  { value: "facebook", label: "facebook" },
+  { value: "linkedin", label: "linkedin" },
+  { value: "tiktok", label: "tiktok" },
+  { value: "twitter", label: "twitter" },
+  { value: "instagram", label: "instagram" },
+  { value: "website", label: "website" },
+  { value: "blog", label: "blog" },
+  { value: "organic", label: "organic" },
+];
+const mediumOptions = [
+  { value: "paid_search", label: "paid_search" },
+  { value: "paid_social", label: "paid_social" },
+  { value: "organic_social", label: "organic_social" },
+  { value: "demo_request", label: "demo_request" },
+  { value: "snapshot_request", label: "snapshot_request" },
+  { value: "paid_email", label: "paid_email" },
+  { value: "marketing_list", label: "marketing_list" },
+  { value: "blog_cta", label: "blog_cta" },
+  { value: "profitability_formula", label: "profitability_formula" },
+];
+
+const UrlBuilder = () => {
+  const [baseUrl, setBaseUrl] = useState("");
+  const [campaignId, setCampaignId] = useState("");
+  const [utmSource, setUtmSource] = useState(null);
+  const [utmMedium, setUtmMedium] = useState(null);
+  const [utmTerm, setUtmTerm] = useState("");
+  const [utmContent, setUtmContent] = useState("");
+  const [campaignName, setCampaignName] = useState("");
+  const [slashTag, setSlashTag] = useState("");
+
+  const [shortUrl, setShortUrl] = useState("");
+
+  const createUrl = (event) => {
+    event.preventDefault();
+    const body = {
+      slashTag,
+      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_term=${utmTerm}&utm_content=${utmContent}`,
+    };
+    axios
+      .post(
+        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/shortenUrl",
+        body
+      )
+      .then((res) => {
+        console.log(res.data);
+        setShortUrl(res.data);
+        console.log(shortUrl)
+      });
+  };
+
+  return (
+    <Layout>
+      <main className={styles.main}>
+        <h3 className='text-center mb-4 mt-5'>Marketing URL Builder</h3>
+        <form className={styles.form}>
+          <input
+            value={baseUrl}
+            onChange={(e) => setBaseUrl(e.target.value)}
+            id='baseUrl'
+            placeholder='Paste in the base URL here.'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <input
+            value={campaignId}
+            onChange={(e) => setCampaignId(e.target.value)}
+            id='campaign_id'
+            placeholder='Campaign ID'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <Select
+            value={utmSource}
+            onChange={(e) => setUtmSource(e)}
+            placeholder={<div>UTM Source</div>}
+            options={sourceOptions}
+          />
+          <div className={styles.line}></div>
+          <Select
+            value={utmMedium}
+            onChange={(e) => setUtmMedium(e)}
+            placeholder={<div>UTM Medium</div>}
+            options={mediumOptions}
+          />
+          <div className={styles.line}></div>
+          <input
+            value={utmTerm}
+            onChange={(e) => setUtmTerm(e.target.value)}
+            id='utm_term'
+            placeholder='UTM Term'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <input
+            value={utmContent}
+            onChange={(e) => setUtmContent(e.target.value)}
+            id='utm_content'
+            placeholder='UTM Content - e.g. how_to_improve_visits'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <input
+            value={campaignName}
+            onChange={(e) => setCampaignName(e.target.value)}
+            id='campaign_name'
+            placeholder='Full name of campaign'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <input
+            value={slashTag}
+            onChange={(e) => setSlashTag(e.target.value)}
+            id='slash_tag'
+            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <button onClick={createUrl} className='btn btn-primary w-100'>
+            Create URL
+          </button>
+        </form>
+        {shortUrl ? (
+            <>
+            <p className="text-center">Click the link to copy to clipboard.</p>
+            <h2 style={{cursor: 'pointer', color: '#007bff'}} onClick={() => {navigator.clipboard.writeText(shortUrl)}} className='text-center'>{shortUrl}</h2>
+            </>
+        ) : null}
+      </main>
+    </Layout>
+  );
+};
+
+export default UrlBuilder;
