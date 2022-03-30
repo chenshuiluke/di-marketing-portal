@@ -32,7 +32,6 @@ const UrlBuilder = () => {
   const [campaignId, setCampaignId] = useState("");
   const [utmSource, setUtmSource] = useState(null);
   const [utmMedium, setUtmMedium] = useState(null);
-  const [utmTerm, setUtmTerm] = useState("");
   const [utmContent, setUtmContent] = useState("");
   const [campaignName, setCampaignName] = useState("");
   const [slashTag, setSlashTag] = useState("");
@@ -43,7 +42,7 @@ const UrlBuilder = () => {
     event.preventDefault();
     const body = {
       slashTag,
-      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_term=${utmTerm}&utm_content=${utmContent}`,
+      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_content=${utmContent}`,
     };
     axios
       .post(
@@ -53,7 +52,7 @@ const UrlBuilder = () => {
       .then((res) => {
         console.log(res.data);
         setShortUrl(res.data);
-        console.log(shortUrl)
+        console.log(shortUrl);
       });
   };
 
@@ -95,22 +94,18 @@ const UrlBuilder = () => {
           />
           <div className={styles.line}></div>
           <input
-            value={utmTerm}
-            onChange={(e) => setUtmTerm(e.target.value)}
-            id='utm_term'
-            placeholder='UTM Term'
-            className='form-control'
-            type='text'
-          />
-          <div className={styles.line}></div>
-          <input
             value={utmContent}
             onChange={(e) => setUtmContent(e.target.value)}
             id='utm_content'
-            placeholder='UTM Content - e.g. how_to_improve_visits'
+            placeholder='UTM Content'
             className='form-control'
             type='text'
           />
+          <small id='content_help' class='form-text text-muted'>
+            (optional) – use this to denote variations of the same campaign,
+            e.g. video_ad and image_ad
+          </small>
+
           <div className={styles.line}></div>
           <input
             value={campaignName}
@@ -135,10 +130,17 @@ const UrlBuilder = () => {
           </button>
         </form>
         {shortUrl ? (
-            <>
-            <p className="text-center">Click the link to copy to clipboard.</p>
-            <h2 style={{cursor: 'pointer', color: '#007bff'}} onClick={() => {navigator.clipboard.writeText(shortUrl)}} className='text-center'>{shortUrl}</h2>
-            </>
+          <>
+            <p className='text-center'>Click the link to copy to clipboard.</p>
+            <h2
+              style={{ cursor: "pointer", color: "#007bff" }}
+              onClick={() => {
+                navigator.clipboard.writeText(shortUrl);
+              }}
+              className='text-center'>
+              {shortUrl}
+            </h2>
+          </>
         ) : null}
       </main>
     </Layout>
