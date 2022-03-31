@@ -37,8 +37,8 @@ const UrlBuilder = () => {
   const [utmContent, setUtmContent] = useState("");
   const [campaignName, setCampaignName] = useState("");
   const [slashTag, setSlashTag] = useState("");
-
   const [shortUrl, setShortUrl] = useState("");
+  const [throwError, setThrowError] = useState(false);
 
   const createUrl = (event) => {
     event.preventDefault();
@@ -52,11 +52,17 @@ const UrlBuilder = () => {
         body
       )
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setShortUrl(res.data);
-        console.log(shortUrl);
+      })
+      .catch((err) => {
+        showAlert()
       });
   };
+
+  const showAlert = () => {
+    alert('Please ensure that your formatting is correct. If it is, the link you are trying to create already exists. Use a different slash tag.')
+  }
 
   return (
     <Layout>
@@ -71,6 +77,9 @@ const UrlBuilder = () => {
             className='form-control'
             type='text'
           />
+          <small id='url_help' className='form-text text-muted text-center'>
+            Copy URL directly from the site then paste here.
+          </small>
           <div className={styles.line}></div>
           <input
             value={campaignId}
@@ -103,7 +112,7 @@ const UrlBuilder = () => {
             className='form-control'
             type='text'
           />
-          <small id='content_help' class='form-text text-muted text-center'>
+          <small id='content_help' className='form-text text-muted text-center'>
             (optional) – use this to denote variations of the same campaign,
             e.g. video_ad and image_ad
           </small>
@@ -122,10 +131,13 @@ const UrlBuilder = () => {
             value={slashTag}
             onChange={(e) => setSlashTag(e.target.value)}
             id='slash_tag'
-            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
+            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG' 
             className='form-control'
             type='text'
           />
+              <small id='slash_help' className='form-text text-muted text-center'>
+            No slashes. Only use - and _ when seperating words.
+          </small>
           <div className={styles.line}></div>
           <button onClick={createUrl} className='btn btn-primary w-100'>
             Create URL
