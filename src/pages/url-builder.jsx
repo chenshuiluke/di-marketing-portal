@@ -14,6 +14,7 @@ const sourceOptions = [
   { value: "website", label: "website" },
   { value: "blog", label: "blog" },
   { value: "organic", label: "organic" },
+  { value: "ebook", label: "ebook" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
@@ -25,6 +26,7 @@ const mediumOptions = [
   { value: "marketing_list", label: "marketing_list" },
   { value: "blog_cta", label: "blog_cta" },
   { value: "profitability_formula", label: "profitability_formula" },
+  { value: "cta", label: "cta" },
 ];
 
 const UrlBuilder = () => {
@@ -101,7 +103,7 @@ const UrlBuilder = () => {
             className='form-control'
             type='text'
           />
-          <small id='content_help' class='form-text text-muted'>
+          <small id='content_help' class='form-text text-muted text-center'>
             (optional) – use this to denote variations of the same campaign,
             e.g. video_ad and image_ad
           </small>
