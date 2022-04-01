@@ -15,6 +15,8 @@ const sourceOptions = [
   { value: "blog", label: "blog" },
   { value: "organic", label: "organic" },
   { value: "ebook", label: "ebook" },
+  { value: "email", label: "email" },
+  { value: "staff", label: "staff" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
@@ -38,7 +40,6 @@ const UrlBuilder = () => {
   const [campaignName, setCampaignName] = useState("");
   const [slashTag, setSlashTag] = useState("");
   const [shortUrl, setShortUrl] = useState("");
-  const [throwError, setThrowError] = useState(false);
 
   const createUrl = (event) => {
     event.preventDefault();
