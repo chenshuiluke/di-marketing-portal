@@ -46,6 +46,8 @@ const UrlBuilder = () => {
     const body = {
       slashTag,
       destinationUrl: `${baseUrl}?campaign_id=${campaignId}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_content=${utmContent}`,
+      campaignName,
+      utmContent
     };
     axios
       .post(
@@ -68,7 +70,10 @@ const UrlBuilder = () => {
   return (
     <Layout>
       <main className={styles.main}>
-        <h3 className='text-center mb-4 mt-5'>Marketing URL Builder</h3>
+        <h3 className='text-center mb-1 mt-5'>Marketing URL Builder</h3>
+        <div className='d-flex justify-content-center mb-4'>
+        <a target='_blank' href="https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing" className="text-center w-100">View URL Spreadsheet</a>
+        </div>
         <form className={styles.form}>
           <input
             value={baseUrl}
