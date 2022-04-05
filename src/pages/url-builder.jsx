@@ -26,7 +26,6 @@ const mediumOptions = [
   { value: "snapshot_request", label: "snapshot_request" },
   { value: "paid_email", label: "paid_email" },
   { value: "marketing_list", label: "marketing_list" },
-  { value: "blog_cta", label: "blog_cta" },
   { value: "profitability_formula", label: "profitability_formula" },
   { value: "cta", label: "cta" },
 ];
