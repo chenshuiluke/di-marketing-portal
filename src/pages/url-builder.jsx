@@ -17,6 +17,7 @@ const sourceOptions = [
   { value: "ebook", label: "ebook" },
   { value: "email", label: "email" },
   { value: "staff", label: "staff" },
+  { value: "aadom", label: "aadom" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
