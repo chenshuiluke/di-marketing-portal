@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `di. Marketing Portal`,
-    siteUrl: `dimarketingportal.com`,
+    siteUrl: `https://dimarketingportal.com`,
   },
   plugins: [
     {
