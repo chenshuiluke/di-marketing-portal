@@ -43,7 +43,7 @@ const PageCreation = () => {
       pageType: baseUrl.label,
     };
 
-    axios.post("http://localhost:8200/api/addPartner", body).then((res) => {
+    axios.post("https://di-marketing-server-iuzlr.ondigitalocean.app/api/addPartner", body).then((res) => {
       console.log(res.data);
 
       if (res.data === "Already exists") {
