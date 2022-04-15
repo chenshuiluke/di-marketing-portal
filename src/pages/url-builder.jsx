@@ -70,7 +70,7 @@ const UrlBuilder = () => {
   return (
     <Layout>
       <main className={styles.main}>
-        <h3 className='text-center mb-1 mt-5'>Marketing URL Builder</h3>
+        <h3 className='text-center mb-1 mt-2'>Marketing URL Builder</h3>
         <div className='d-flex justify-content-center mb-4'>
         <a target='_blank' href="https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing" className="text-center w-100">View URL Spreadsheet</a>
         </div>

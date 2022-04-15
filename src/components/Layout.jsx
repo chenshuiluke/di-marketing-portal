@@ -1,6 +1,7 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/provider";
 import { extendTheme } from "@chakra-ui/react";
+import Sidebar from "./Sidebar";
 
 const theme = extendTheme({
   colors: {
@@ -24,7 +25,8 @@ const theme = extendTheme({
 export default function Layout({ children }) {
   return (
     <ChakraProvider theme={theme}>
-      <div className='container'>
+      <Sidebar/>
+      <div style={{maxWidth: '1100px'}} className='container'>
         <header className='d-flex justify-content-center p-4'>
           <img
             style={{ maxWidth: "200px", marginBottom: '3rem' }}
@@ -32,6 +34,7 @@ export default function Layout({ children }) {
             alt=''
           />
         </header>
+        
         {children}
       </div>
     </ChakraProvider>
