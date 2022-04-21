@@ -18,6 +18,7 @@ const sourceOptions = [
   { value: "email", label: "email" },
   { value: "staff", label: "staff" },
   { value: "aadom", label: "aadom" },
+  { value: "webinar", label: "webinar" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
