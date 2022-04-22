@@ -19,6 +19,7 @@ const sourceOptions = [
   { value: "staff", label: "staff" },
   { value: "aadom", label: "aadom" },
   { value: "webinar", label: "webinar" },
+  { value: "event", label: "event" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
@@ -30,6 +31,7 @@ const mediumOptions = [
   { value: "marketing_list", label: "marketing_list" },
   { value: "profitability_formula", label: "profitability_formula" },
   { value: "cta", label: "cta" },
+  { value: "qr_code", label: "qr_code" },
 ];
 
 const UrlBuilder = () => {
