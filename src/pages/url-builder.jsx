@@ -50,7 +50,7 @@ const UrlBuilder = () => {
       slashTag,
       destinationUrl: `${baseUrl}?campaign_id=${campaignId}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_content=${utmContent}&utm_campaign=${campaignId}`,
       campaignName,
-      utmContent
+      utmContent,
     };
     axios
       .post(
@@ -59,23 +59,31 @@ const UrlBuilder = () => {
       )
       .then((res) => {
         console.log(res);
-        setShortUrl(res.data);
+
+        if (res.data === "Already exists") {
+          alert("URL with that Slash Tag already exists.");
+        } else if (res.data === "Invalid format") {
+          alert("Invalid format. Check that slash tag and url are formatted correctly.");
+        } else {
+          setShortUrl(res.data);
+        }
       })
       .catch((err) => {
-        showAlert()
+        console.log(err);
       });
   };
-
-  const showAlert = () => {
-    alert('Please ensure that your formatting is correct. If it is, the link you are trying to create already exists. Use a different slash tag.')
-  }
 
   return (
     <Layout>
       <main className={styles.main}>
         <h3 className='text-center mb-1 mt-2'>Marketing URL Builder</h3>
         <div className='d-flex justify-content-center mb-4'>
-        <a target='_blank' href="https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing" className="text-center w-100">View URL Spreadsheet</a>
+          <a
+            target='_blank'
+            href='https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing'
+            className='text-center w-100'>
+            View URL Spreadsheet
+          </a>
         </div>
         <form className={styles.form}>
           <input
@@ -140,11 +148,11 @@ const UrlBuilder = () => {
             value={slashTag}
             onChange={(e) => setSlashTag(e.target.value)}
             id='slash_tag'
-            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG' 
+            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
             className='form-control'
             type='text'
           />
-              <small id='slash_help' className='form-text text-muted text-center'>
+          <small id='slash_help' className='form-text text-muted text-center'>
             No slashes. Only use - and _ when seperating words.
           </small>
           <div className={styles.line}></div>
