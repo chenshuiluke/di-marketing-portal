@@ -20,13 +20,12 @@ const sourceOptions = [
   { value: "aadom", label: "aadom" },
   { value: "webinar", label: "webinar" },
   { value: "event", label: "event" },
+  { value: "partner", label: "partner" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
   { value: "paid_social", label: "paid_social" },
   { value: "organic_social", label: "organic_social" },
-  { value: "demo_request", label: "demo_request" },
-  { value: "snapshot_request", label: "snapshot_request" },
   { value: "paid_email", label: "paid_email" },
   { value: "marketing_list", label: "marketing_list" },
   { value: "profitability_formula", label: "profitability_formula" },
