@@ -31,6 +31,7 @@ const mediumOptions = [
   { value: "profitability_formula", label: "profitability_formula" },
   { value: "cta", label: "cta" },
   { value: "qr_code", label: "qr_code" },
+  { value: "customer_email", label: "customer_email" },
 ];
 
 const UrlBuilder = () => {
