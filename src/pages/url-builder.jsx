@@ -13,14 +13,13 @@ const sourceOptions = [
   { value: "instagram", label: "instagram" },
   { value: "website", label: "website" },
   { value: "blog", label: "blog" },
-  { value: "organic", label: "organic" },
   { value: "ebook", label: "ebook" },
   { value: "email", label: "email" },
-  { value: "staff", label: "staff" },
   { value: "aadom", label: "aadom" },
   { value: "webinar", label: "webinar" },
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
+  { value: "pendo", label: "pendo" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
