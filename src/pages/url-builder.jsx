@@ -28,7 +28,6 @@ const mediumOptions = [
   { value: "organic_social", label: "organic_social" },
   { value: "paid_email", label: "paid_email" },
   { value: "marketing_list", label: "marketing_list" },
-  { value: "profitability_formula", label: "profitability_formula" },
   { value: "cta", label: "cta" },
   { value: "qr_code", label: "qr_code" },
   { value: "customer_email", label: "customer_email" },
