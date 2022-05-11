@@ -30,6 +30,7 @@ const mediumOptions = [
   { value: "cta", label: "cta" },
   { value: "qr_code", label: "qr_code" },
   { value: "customer_email", label: "customer_email" },
+  { value: "landing_page", label: "landing_page" },
 ];
 
 const UrlBuilder = () => {
