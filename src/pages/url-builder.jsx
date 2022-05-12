@@ -20,6 +20,7 @@ const sourceOptions = [
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
   { value: "pendo", label: "pendo" },
+  { value: "podcast", label: "podcast" },
 ];
 const mediumOptions = [
   { value: "paid_search", label: "paid_search" },
