@@ -29,8 +29,8 @@ export default function Layout({ children }) {
       <div style={{maxWidth: '1100px'}} className='container'>
         <header className='d-flex justify-content-center p-4'>
           <img
-            style={{ maxWidth: "200px", marginBottom: '3rem' }}
-            src='https://4394269.fs1.hubspotusercontent-na1.net/hubfs/4394269/di%20logo%20long.png'
+            style={{ maxWidth: "200px" }}
+            src='https://4394269.fs1.hubspotusercontent-na1.net/hubfs/4394269/di-dark.png'
             alt=''
           />
         </header>

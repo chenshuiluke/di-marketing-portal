@@ -80,19 +80,19 @@ const PageCreation = () => {
         <Tabs isFitted variant='enclosed'>
           <TabList mb='1em'>
             <Tab
-              _focus={{ outline: 0, backgroundColor: "#f8f8f8" }}
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
               className={styles.gp_tab}>
-              Growth Platform
+              Bundle (Engagement & Analytics)
             </Tab>
             <Tab
-              _focus={{ outline: 0, backgroundColor: "#f8f8f8" }}
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
               className={styles.os_tab}>
-              Online Scheduling
+              Analytics
             </Tab>
             <Tab
-              _focus={{ outline: 0, backgroundColor: "#f8f8f8"}}
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5"}}
               className={styles.modento_tab}>
-              Modento
+              Engagement
             </Tab>
           </TabList>
           <TabPanels>
