@@ -175,18 +175,18 @@ const UrlBuilder = () => {
     return (
       <Layout>
         <main className={styles.main}>
-          <h1 style={{color: '#002856'}} className='text-center mb-1 mt-2'>Marketing URL Builder</h1>
+          <h1 style={{color: '#002856', fontSize: '37px'}} className='text-center mb-1 mt-2'>Marketing URL Builder</h1>
           <div className='d-flex justify-content-center mb-4 flex-column'>
             <a
               target='_blank'
-              style={{color: '#002856'}}
+              style={{color: '#002856', textDecorationLine: 'underline'}}
               href='https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0'
               className='text-center w-100'>
               View parameter instructions before creating a link
             </a>
             <a
               target='_blank'
-              style={{color: '#002856'}}
+              style={{color: '#002856', textDecorationLine: 'underline'}}
               href='https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing'
               className='text-center w-100'>
               View URL Spreadsheet
@@ -292,7 +292,7 @@ const UrlBuilder = () => {
             <>
               <p className='text-center'>Click the link to copy to clipboard.</p>
               <h2
-                style={{ cursor: "pointer", color: "#007bff" }}
+                style={{ cursor: "pointer", color: "#002856", fontSize:'30px' }}
                 onClick={() => {
                   navigator.clipboard.writeText(shortUrl);
                 }}
