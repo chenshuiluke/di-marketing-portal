@@ -209,7 +209,7 @@ const UrlBuilder = () => {
               value={campaignId}
               onChange={(e) => setCampaignId(e.target.value)}
               id='campaign_id'
-              placeholder='Campaign ID'
+              placeholder='Campaign ID (UTM Campaign)'
               className='form-control'
               type='text'
             />
