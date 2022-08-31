@@ -99,7 +99,7 @@ const UrlBuilder = () => {
     event.preventDefault();
     const body = {
       slashTag,
-      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&lead_source=${leadSource.value}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value}&utm_content=${utmContent}&utm_campaign=${campaignId}`,
+      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&lead_source=${leadSource.value}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value ? utmMedium.value : utmMedium}&utm_content=${utmContent}&utm_campaign=${campaignId}`,
       campaignName,
       utmContent,
     };
