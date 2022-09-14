@@ -13,12 +13,12 @@ import { Widget } from "@uploadcare/react-widget";
 
 const pageOptions = [
   {
-    value: "https://www.dentalintel.com/partner-page-bundle/",
+    value: "https://www.dentalintel.com/partner-page-bundle?",
     label: "Bundle (Engagement + Analytics)",
   },
-  { value: "https://www.dentalintel.com/partner-page-analytics/", label: "Analytics" },
+  { value: "https://www.dentalintel.com/partner-page-analytics?", label: "Analytics" },
   {
-    value: "https://www.dentalintel.com/partner-page-engagement/",
+    value: "https://www.dentalintel.com/partner-page-engagement?",
     label: "Engagement",
   },
 ];
