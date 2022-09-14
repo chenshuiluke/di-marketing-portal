@@ -13,13 +13,13 @@ import { Widget } from "@uploadcare/react-widget";
 
 const pageOptions = [
   {
-    value: "https://www.dentalintel.com/growth-partner.php?",
-    label: "Growth Platform",
+    value: "https://www.dentalintel.com/partner-page-bundle/",
+    label: "Bundle (Engagement + Analytics)",
   },
-  { value: "https://www.dentalintel.com/os-partner?", label: "LocalMed" },
+  { value: "https://www.dentalintel.com/partner-page-analytics/", label: "Analytics" },
   {
-    value: "https://www.dentalintel.com/modento-demo-partners?",
-    label: "Modento",
+    value: "https://www.dentalintel.com/partner-page-engagement/",
+    label: "Engagement",
   },
 ];
 export default function CreatePageModal(props) {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { CopyIcon } from "@chakra-ui/icons";
 import {
   Table,
   Thead,
@@ -12,12 +11,13 @@ import {
   TableContainer,
   Tooltip,
 } from "@chakra-ui/react";
+import { CopyIcon } from "@chakra-ui/icons";
 
-const OSPartnersTab = () => {
+const BundlePartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getOSPartners").then((res) => {
+    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getBundlePartners").then((res) => {
       console.log(res.data);
       setPartners(res.data);
     });
@@ -27,13 +27,11 @@ const OSPartnersTab = () => {
     <>
       <TableContainer>
         <Table variant='simple'>
-          <TableCaption>Online Scheduling Partner Pages</TableCaption>
+          <TableCaption>Bundle Partner Pages</TableCaption>
           <Thead>
             <Tr>
               <Th>Partner Name</Th>
               <Th>URL</Th>
-              <Th isNumeric>Submissions</Th>
-              <Th isNumeric>Visits</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -49,7 +47,7 @@ const OSPartnersTab = () => {
                           href={"https://" + partner.short_url}>
                           {partner.short_url}
                         </a>
-                        <Tooltip label="Copy to clipboard">
+                        <Tooltip label='Copy to clipboard'>
                           <span
                             onClick={() =>
                               navigator.clipboard.writeText(partner.short_url)
@@ -59,8 +57,6 @@ const OSPartnersTab = () => {
                           </span>
                         </Tooltip>
                       </Td>
-                      <Td isNumeric>{partner.submissions}</Td>
-                      <Td isNumeric>{partner.visits}</Td>
                     </Tr>
                   </React.Fragment>
                 ))
@@ -72,4 +68,4 @@ const OSPartnersTab = () => {
   );
 };
 
-export default OSPartnersTab;
+export default BundlePartnersTab;

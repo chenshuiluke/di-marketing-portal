@@ -13,11 +13,11 @@ import {
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
 
-const ModentoPartnersTab = () => {
+const EngagementPartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getModentoPartners").then((res) => {
+    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getEngagementPartners").then((res) => {
       console.log(res.data);
       setPartners(res.data);
     });
@@ -27,13 +27,11 @@ const ModentoPartnersTab = () => {
     <>
       <TableContainer>
         <Table variant='simple'>
-          <TableCaption>Modento Partner Pages</TableCaption>
+          <TableCaption>Engagement Partner Pages</TableCaption>
           <Thead>
             <Tr>
               <Th>Partner Name</Th>
               <Th>URL</Th>
-              <Th isNumeric>Submissions</Th>
-              <Th isNumeric>Visits</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -49,7 +47,7 @@ const ModentoPartnersTab = () => {
                           href={"https://" + partner.short_url}>
                           {partner.short_url}
                         </a>
-                        <Tooltip label='Copy to clipboard'>
+                        <Tooltip label="Copy to clipboard">
                           <span
                             onClick={() =>
                               navigator.clipboard.writeText(partner.short_url)
@@ -59,8 +57,6 @@ const ModentoPartnersTab = () => {
                           </span>
                         </Tooltip>
                       </Td>
-                      <Td isNumeric>{partner.submissions}</Td>
-                      <Td isNumeric>{partner.visits}</Td>
                     </Tr>
                   </React.Fragment>
                 ))
@@ -72,4 +68,4 @@ const ModentoPartnersTab = () => {
   );
 };
 
-export default ModentoPartnersTab;
+export default EngagementPartnersTab;

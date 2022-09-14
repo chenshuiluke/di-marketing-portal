@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CopyIcon } from "@chakra-ui/icons";
 import {
   Table,
   Thead,
@@ -11,13 +12,12 @@ import {
   TableContainer,
   Tooltip,
 } from "@chakra-ui/react";
-import { CopyIcon } from "@chakra-ui/icons";
 
-const GrowthPlatformPartnersTab = () => {
+const OSPartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getGrowthPartners").then((res) => {
+    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getAnalyticsPartners").then((res) => {
       console.log(res.data);
       setPartners(res.data);
     });
@@ -27,13 +27,11 @@ const GrowthPlatformPartnersTab = () => {
     <>
       <TableContainer>
         <Table variant='simple'>
-          <TableCaption>Growth Platform Partner Pages</TableCaption>
+          <TableCaption>Analytics Partner Pages</TableCaption>
           <Thead>
             <Tr>
               <Th>Partner Name</Th>
               <Th>URL</Th>
-              <Th isNumeric>Submissions</Th>
-              <Th isNumeric>Visits</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -59,8 +57,6 @@ const GrowthPlatformPartnersTab = () => {
                           </span>
                         </Tooltip>
                       </Td>
-                      <Td isNumeric>{partner.submissions}</Td>
-                      <Td isNumeric>{partner.visits}</Td>
                     </Tr>
                   </React.Fragment>
                 ))
@@ -72,4 +68,4 @@ const GrowthPlatformPartnersTab = () => {
   );
 };
 
-export default GrowthPlatformPartnersTab;
+export default OSPartnersTab;

@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import * as styles from "./../components/modules/url-builder.module.css";
 import Select from "react-select";
 import axios from "axios";
-import { render } from "react-dom";
 
 
 const leadSourceOptions = [
@@ -124,9 +123,6 @@ const UrlBuilder = () => {
       });
   };
 
-
-
-
   const updateInputs = (sourceSelection) => {
     setUtmSource(sourceSelection)
     setUtmMedium(null)
@@ -172,138 +168,139 @@ const UrlBuilder = () => {
       setShowInput(true)
     }
   }
-    return (
-      <Layout>
-        <main className={styles.main}>
-          <h1 style={{color: '#002856', fontSize: '37px'}} className='text-center mb-1 mt-2'>Marketing URL Builder</h1>
-          <div className='d-flex justify-content-center mb-4 flex-column'>
-            <a
-              target='_blank'
-              style={{color: '#002856', textDecorationLine: 'underline'}}
-              href='https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0'
-              className='text-center w-100'>
-              View parameter instructions before creating a link
-            </a>
-            <a
-              target='_blank'
-              style={{color: '#002856', textDecorationLine: 'underline'}}
-              href='https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing'
-              className='text-center w-100'>
-              View URL Spreadsheet
-            </a>
-          </div>
-          <form className={styles.form}>
+  
+  return (
+    <Layout>
+      <main className={styles.main}>
+        <h1 style={{ color: '#002856', fontSize: '37px' }} className='text-center mb-1 mt-2'>Marketing URL Builder</h1>
+        <div className='d-flex justify-content-center mb-4 flex-column'>
+          <a
+            target='_blank'
+            style={{ color: '#002856', textDecorationLine: 'underline' }}
+            href='https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0'
+            className='text-center w-100'>
+            View parameter instructions before creating a link
+          </a>
+          <a
+            target='_blank'
+            style={{ color: '#002856', textDecorationLine: 'underline' }}
+            href='https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing'
+            className='text-center w-100'>
+            View URL Spreadsheet
+          </a>
+        </div>
+        <form className={styles.form}>
+          <input
+            value={baseUrl}
+            onChange={(e) => setBaseUrl(e.target.value)}
+            id='baseUrl'
+            placeholder='Paste in the base URL here.'
+            className='form-control'
+            type='text'
+          />
+          <small id='url_help' className='form-text text-muted text-center'>
+            Copy URL directly from the site then paste here.
+          </small>
+          <div className={styles.line}></div>
+          <input
+            value={campaignId}
+            onChange={(e) => setCampaignId(e.target.value)}
+            id='campaign_id'
+            placeholder='Campaign ID (UTM Campaign)'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <Select
+            value={leadSource}
+            onChange={(e) => setLeadSource(e)}
+            placeholder={<div>Lead Source</div>}
+            options={leadSourceOptions}
+          />
+          <div className={styles.line}></div>
+          <Select
+            value={utmSource}
+            onChange={(e) => updateInputs(e)}
+            placeholder={<div>UTM Source</div>}
+            options={leadSource.value === 'marketing' ? marketingSourceOptions : (leadSource.value === 'event' ? eventSourceOptions : partnerSourceOptions)}
+          />
+          <div className={styles.line}></div>
+          {showInput ? (
             <input
-              value={baseUrl}
-              onChange={(e) => setBaseUrl(e.target.value)}
-              id='baseUrl'
-              placeholder='Paste in the base URL here.'
+              value={utmMedium}
+              onChange={(e) => setUtmMedium(e.target.value)}
+              placeholder='UTM Medium'
               className='form-control'
               type='text'
             />
-            <small id='url_help' className='form-text text-muted text-center'>
-              Copy URL directly from the site then paste here.
-            </small>
-            <div className={styles.line}></div>
-            <input
-              value={campaignId}
-              onChange={(e) => setCampaignId(e.target.value)}
-              id='campaign_id'
-              placeholder='Campaign ID (UTM Campaign)'
-              className='form-control'
-              type='text'
-            />
-            <div className={styles.line}></div>
+
+          ) : (
+
             <Select
-              value={leadSource}
-              onChange={(e) => setLeadSource(e)}
-              placeholder={<div>Lead Source</div>}
-              options={leadSourceOptions}
+              value={utmMedium}
+              onChange={(e) => setUtmMedium(e)}
+              placeholder={<div>UTM Medium</div>}
+              options={mediumOptions}
+
             />
-            <div className={styles.line}></div>
-            <Select
-              value={utmSource}
-              onChange={(e) => updateInputs(e)}
-              placeholder={<div>UTM Source</div>}
-              options={leadSource.value === 'marketing' ? marketingSourceOptions : (leadSource.value === 'event' ? eventSourceOptions : partnerSourceOptions)}
-            />
-            <div className={styles.line}></div>
-            {showInput ? (
-              <input
-                value={utmMedium}
-                onChange={(e) => setUtmMedium(e.target.value)}
-                placeholder='UTM Medium'
-                className='form-control'
-                type='text'
-              />
+          )}
 
-            ) : (
+          <div className={styles.line}></div>
+          <input
+            value={utmContent}
+            onChange={(e) => setUtmContent(e.target.value)}
+            id='utm_content'
+            placeholder='UTM Content'
+            className='form-control'
+            type='text'
+          />
+          <small id='content_help' className='form-text text-muted text-center'>
+            (optional) – use this to denote variations of the same campaign,
+            e.g. video_ad and image_ad
+          </small>
 
-              <Select
-                value={utmMedium}
-                onChange={(e) => setUtmMedium(e)}
-                placeholder={<div>UTM Medium</div>}
-                options={mediumOptions}
+          <div className={styles.line}></div>
+          <input
+            value={campaignName}
+            onChange={(e) => setCampaignName(e.target.value)}
+            id='campaign_name'
+            placeholder='Full name of campaign'
+            className='form-control'
+            type='text'
+          />
+          <div className={styles.line}></div>
+          <input
+            value={slashTag}
+            onChange={(e) => setSlashTag(e.target.value)}
+            id='slash_tag'
+            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
+            className='form-control'
+            type='text'
+          />
+          <small id='slash_help' className='form-text text-muted text-center'>
+            No slashes. Only use - and _ when seperating words.
+          </small>
+          <div className={styles.line}></div>
+          <button onClick={createUrl} className='btn btn-primary w-100'>
+            Create URL
+          </button>
+        </form>
+        {shortUrl ? (
+          <>
+            <p className='text-center'>Click the link to copy to clipboard.</p>
+            <h2
+              style={{ cursor: "pointer", color: "#002856", fontSize: '30px' }}
+              onClick={() => {
+                navigator.clipboard.writeText(shortUrl);
+              }}
+              className='text-center'>
+              {shortUrl}
+            </h2>
+          </>
+        ) : null}
+      </main>
+    </Layout>
+  );
+};
 
-              />
-            )}
-
-            <div className={styles.line}></div>
-            <input
-              value={utmContent}
-              onChange={(e) => setUtmContent(e.target.value)}
-              id='utm_content'
-              placeholder='UTM Content'
-              className='form-control'
-              type='text'
-            />
-            <small id='content_help' className='form-text text-muted text-center'>
-              (optional) – use this to denote variations of the same campaign,
-              e.g. video_ad and image_ad
-            </small>
-
-            <div className={styles.line}></div>
-            <input
-              value={campaignName}
-              onChange={(e) => setCampaignName(e.target.value)}
-              id='campaign_name'
-              placeholder='Full name of campaign'
-              className='form-control'
-              type='text'
-            />
-            <div className={styles.line}></div>
-            <input
-              value={slashTag}
-              onChange={(e) => setSlashTag(e.target.value)}
-              id='slash_tag'
-              placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
-              className='form-control'
-              type='text'
-            />
-            <small id='slash_help' className='form-text text-muted text-center'>
-              No slashes. Only use - and _ when seperating words.
-            </small>
-            <div className={styles.line}></div>
-            <button onClick={createUrl} className='btn btn-primary w-100'>
-              Create URL
-            </button>
-          </form>
-          {shortUrl ? (
-            <>
-              <p className='text-center'>Click the link to copy to clipboard.</p>
-              <h2
-                style={{ cursor: "pointer", color: "#002856", fontSize:'30px' }}
-                onClick={() => {
-                  navigator.clipboard.writeText(shortUrl);
-                }}
-                className='text-center'>
-                {shortUrl}
-              </h2>
-            </>
-          ) : null}
-        </main>
-      </Layout>
-    );
-  };
-
-  export default UrlBuilder;
+export default UrlBuilder;

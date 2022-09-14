@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import CreatePageModal from "../components/CreatePageModal";
-import GrowthPlatformPartnersTab from "../components/GrowthPlatformPartnersTab";
-import OSPartnersTab from "../components/OSPartnersTab";
-import ModentoPartnersTab from "../components/ModentoPartnersTab";
+import  EngagementPartnersTab from "../components/EngagementPartnersTab";
+import AnalyticsPartnerTab from "../components/AnalyticsPartnersTab";
+import BundlePartnersTab from "../components/BundlePartnersTab";
 import * as styles from "./../components/modules/page-creation.module.css";
 import { Button } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
@@ -82,7 +82,7 @@ const PageCreation = () => {
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
               className={styles.gp_tab}>
-              Bundle (Engagement & Analytics)
+              Engagement
             </Tab>
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
@@ -92,18 +92,18 @@ const PageCreation = () => {
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5"}}
               className={styles.modento_tab}>
-              Engagement
+              Bundle
             </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-             <GrowthPlatformPartnersTab/>
+             <EngagementPartnersTab/>
             </TabPanel>
             <TabPanel>
-                <OSPartnersTab/>
+                <AnalyticsPartnerTab/>
             </TabPanel>
             <TabPanel>
-              <ModentoPartnersTab/>
+              <BundlePartnersTab/>
             </TabPanel>
           </TabPanels>
         </Tabs>
