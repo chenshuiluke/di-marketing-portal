@@ -71,6 +71,7 @@ const customerMarketingMediumOptions = [
   { value: "customer_email", label: "customer_email" },
   { value: "pendo", label: "pendo" },
   { value: "login_page", label: "login_page" },
+  { value: "customer_referral", label: "customer_referral" },
 ];
 
 const eventEmailMediumOptions = [
@@ -168,7 +169,7 @@ const UrlBuilder = () => {
       setShowInput(true)
     }
   }
-  
+
   return (
     <Layout>
       <main className={styles.main}>
