@@ -17,10 +17,14 @@ const OSPartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8200/api/getAnalyticsPartners").then((res) => {
-      console.log(res.data);
-      setPartners(res.data);
-    });
+    axios
+      .get(
+        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/getAnalyticsPartners"
+      )
+      .then((res) => {
+        console.log(res.data);
+        setPartners(res.data);
+      });
   }, []);
 
   return (

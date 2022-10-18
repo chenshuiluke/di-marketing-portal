@@ -18,7 +18,9 @@ const ReportPartnersTab = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8200/api/getGrowthReportPartners")
+      .get(
+        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/getGrowthReportPartners"
+      )
       .then((res) => {
         console.log(res.data);
         setPartners(res.data);

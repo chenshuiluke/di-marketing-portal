@@ -103,7 +103,10 @@ const UrlBuilder = () => {
       utmContent,
     };
     axios
-      .post("http://localhost:8200/api/shortenUrl", body)
+      .post(
+        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/shortenUrl",
+        body
+      )
       .then((res) => {
         console.log(res);
 

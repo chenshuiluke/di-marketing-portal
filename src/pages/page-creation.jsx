@@ -44,23 +44,28 @@ const PageCreation = () => {
       pageType: baseUrl.label,
     };
 
-    axios.post("http://localhost:8200/api/addPartner", body).then((res) => {
-      console.log(res.data);
+    axios
+      .post(
+        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/addPartner",
+        body
+      )
+      .then((res) => {
+        console.log(res.data);
 
-      if (res.data === "Already exists") {
-        alert("URL with that Slash Tag already exists.");
-      } else if (res.data === "Invalid format") {
-        alert("Invalid format. Check that slash tag is formatted correctly.");
-      } else {
-        onClose();
-        setSlashTag("");
-        setCampaignId("");
-        setPartnerName("");
-        setPartnerLogo("");
-        setAlertOpen(true);
-        navigator.clipboard.writeText(res.data);
-      }
-    });
+        if (res.data === "Already exists") {
+          alert("URL with that Slash Tag already exists.");
+        } else if (res.data === "Invalid format") {
+          alert("Invalid format. Check that slash tag is formatted correctly.");
+        } else {
+          onClose();
+          setSlashTag("");
+          setCampaignId("");
+          setPartnerName("");
+          setPartnerLogo("");
+          setAlertOpen(true);
+          navigator.clipboard.writeText(res.data);
+        }
+      });
   };
 
   const reloadPage = () => {
