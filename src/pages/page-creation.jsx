@@ -44,7 +44,7 @@ const PageCreation = () => {
       destinationUrl: `${baseUrl.value}campaign_id=${campaignId}&partner_logo=${partnerLogo}&utm_campaign=${campaignId}`,
       pageType: baseUrl.label,
     };
-    if (pageType == "") {
+    if (baseUrl != null && (baseUrl.label == "" || baseUrl.label == null)) {
       return toast.error("Please select a page type");
     }
     if (slashTag == "") {
