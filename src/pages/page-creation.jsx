@@ -24,6 +24,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import ReportPartnersTab from "../components/ReportPartnersTab";
+import { toast } from "react-toastify";
 
 const PageCreation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,6 +44,18 @@ const PageCreation = () => {
       destinationUrl: `${baseUrl.value}campaign_id=${campaignId}&partner_logo=${partnerLogo}&utm_campaign=${campaignId}`,
       pageType: baseUrl.label,
     };
+    if (pageType == "") {
+      return toast.error("Please select a page type");
+    }
+    if (slashTag == "") {
+      return toast.error("Please enter a tag");
+    }
+    if (campaignId == "") {
+      return toast.error("Please enter a tag");
+    }
+    if (partnerLogo == "") {
+      return toast.error("Please select a partner logo");
+    }
 
     axios
       .post(
