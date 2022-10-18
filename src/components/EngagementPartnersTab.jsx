@@ -17,7 +17,7 @@ const EngagementPartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("https://di-marketing-server-iuzlr.ondigitalocean.app/api/getEngagementPartners").then((res) => {
+    axios.get("http://localhost:8200/api/getEngagementPartners").then((res) => {
       console.log(res.data);
       setPartners(res.data);
     });
@@ -26,7 +26,7 @@ const EngagementPartnersTab = () => {
   return (
     <>
       <TableContainer>
-        <Table variant='simple'>
+        <Table variant="simple">
           <TableCaption>Engagement Partner Pages</TableCaption>
           <Thead>
             <Tr>
@@ -43,8 +43,9 @@ const EngagementPartnersTab = () => {
                       <Td>
                         <a
                           style={{ color: "#007bff", marginRight: "10px" }}
-                          target='_blank'
-                          href={"https://" + partner.short_url}>
+                          target="_blank"
+                          href={"https://" + partner.short_url}
+                        >
                           {partner.short_url}
                         </a>
                         <Tooltip label="Copy to clipboard">
@@ -52,7 +53,8 @@ const EngagementPartnersTab = () => {
                             onClick={() =>
                               navigator.clipboard.writeText(partner.short_url)
                             }
-                            style={{ cursor: "pointer" }}>
+                            style={{ cursor: "pointer" }}
+                          >
                             <CopyIcon />
                           </span>
                         </Tooltip>

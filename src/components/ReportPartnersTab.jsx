@@ -13,21 +13,23 @@ import {
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
 
-const BundlePartnersTab = () => {
+const ReportPartnersTab = () => {
   const [partners, setPartners] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8200/api/getBundlePartners").then((res) => {
-      console.log(res.data);
-      setPartners(res.data);
-    });
+    axios
+      .get("http://localhost:8200/api/getGrowthReportPartners")
+      .then((res) => {
+        console.log(res.data);
+        setPartners(res.data);
+      });
   }, []);
 
   return (
     <>
       <TableContainer>
         <Table variant="simple">
-          <TableCaption>Bundle Partner Pages</TableCaption>
+          <TableCaption>Growth Report Partner Pages</TableCaption>
           <Thead>
             <Tr>
               <Th>Partner Name</Th>
@@ -70,4 +72,4 @@ const BundlePartnersTab = () => {
   );
 };
 
-export default BundlePartnersTab;
+export default ReportPartnersTab;

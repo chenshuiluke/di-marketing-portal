@@ -4,12 +4,10 @@ import * as styles from "./../components/modules/url-builder.module.css";
 import Select from "react-select";
 import axios from "axios";
 
-
 const leadSourceOptions = [
   { value: "marketing", label: "marketing" },
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
-
 ];
 
 const marketingSourceOptions = [
@@ -19,7 +17,7 @@ const marketingSourceOptions = [
   { value: "social_media", label: "social_media" },
   { value: "customer_marketing", label: "customer_marketing" },
   { value: "podcast", label: "podcast" },
-  { value: "webinar", label: "webinar" }
+  { value: "webinar", label: "webinar" },
 ];
 
 const eventSourceOptions = [
@@ -79,8 +77,6 @@ const eventEmailMediumOptions = [
   { value: "post_event_email", label: "post_event_email" },
 ];
 
-
-
 const UrlBuilder = () => {
   const [baseUrl, setBaseUrl] = useState("");
   const [campaignId, setCampaignId] = useState("");
@@ -94,27 +90,29 @@ const UrlBuilder = () => {
   const [showInput, setShowInput] = useState(false);
   const [mediumOptions, setMediumOptions] = useState([]);
 
-
   const createUrl = (event) => {
     event.preventDefault();
     const body = {
       slashTag,
-      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&lead_source=${leadSource.value}&utm_source=${utmSource.value}&utm_medium=${utmMedium.value ? utmMedium.value : utmMedium}&utm_content=${utmContent}&utm_campaign=${campaignId}`,
+      destinationUrl: `${baseUrl}?campaign_id=${campaignId}&lead_source=${
+        leadSource.value
+      }&utm_source=${utmSource.value}&utm_medium=${
+        utmMedium.value ? utmMedium.value : utmMedium
+      }&utm_content=${utmContent}&utm_campaign=${campaignId}`,
       campaignName,
       utmContent,
     };
     axios
-      .post(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/shortenUrl",
-        body
-      )
+      .post("http://localhost:8200/api/shortenUrl", body)
       .then((res) => {
         console.log(res);
 
         if (res.data === "Already exists") {
           alert("URL with that Slash Tag already exists.");
         } else if (res.data === "Invalid format") {
-          alert("Invalid format. Check that slash tag and url are formatted correctly.");
+          alert(
+            "Invalid format. Check that slash tag and url are formatted correctly."
+          );
         } else {
           setShortUrl(res.data);
         }
@@ -125,68 +123,75 @@ const UrlBuilder = () => {
   };
 
   const updateInputs = (sourceSelection) => {
-    setUtmSource(sourceSelection)
-    setUtmMedium(null)
-    if (sourceSelection.value === 'ppc') {
-      setMediumOptions(ppcMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.value === 'website') {
-      setMediumOptions(websiteMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.value === 'email') {
-      setMediumOptions(emailMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.value === 'social_media') {
-      setMediumOptions(socialMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.value === 'customer_marketing') {
-      setMediumOptions(customerMarketingMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.value === 'event_email') {
-      setMediumOptions(eventEmailMediumOptions)
-      setShowInput(false)
-    } else if (sourceSelection.label === 'podcast') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'webinar') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'event_social_media') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'event_demo') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'event_raffle') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_social_media') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_email') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_webinar') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_podcast') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_blog') {
-      setShowInput(true)
-    } else if (sourceSelection.label === 'partner_referral') {
-      setShowInput(true)
+    setUtmSource(sourceSelection);
+    setUtmMedium(null);
+    if (sourceSelection.value === "ppc") {
+      setMediumOptions(ppcMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.value === "website") {
+      setMediumOptions(websiteMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.value === "email") {
+      setMediumOptions(emailMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.value === "social_media") {
+      setMediumOptions(socialMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.value === "customer_marketing") {
+      setMediumOptions(customerMarketingMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.value === "event_email") {
+      setMediumOptions(eventEmailMediumOptions);
+      setShowInput(false);
+    } else if (sourceSelection.label === "podcast") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "webinar") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "event_social_media") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "event_demo") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "event_raffle") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_social_media") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_email") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_webinar") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_podcast") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_blog") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "partner_referral") {
+      setShowInput(true);
     }
-  }
+  };
 
   return (
     <Layout>
       <main className={styles.main}>
-        <h1 style={{ color: '#002856', fontSize: '37px' }} className='text-center mb-1 mt-2'>Marketing URL Builder</h1>
-        <div className='d-flex justify-content-center mb-4 flex-column'>
+        <h1
+          style={{ color: "#002856", fontSize: "37px" }}
+          className="text-center mb-1 mt-2"
+        >
+          Marketing URL Builder
+        </h1>
+        <div className="d-flex justify-content-center mb-4 flex-column">
           <a
-            target='_blank'
-            style={{ color: '#002856', textDecorationLine: 'underline' }}
-            href='https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0'
-            className='text-center w-100'>
+            target="_blank"
+            style={{ color: "#002856", textDecorationLine: "underline" }}
+            href="https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0"
+            className="text-center w-100"
+          >
             View parameter instructions before creating a link
           </a>
           <a
-            target='_blank'
-            style={{ color: '#002856', textDecorationLine: 'underline' }}
-            href='https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing'
-            className='text-center w-100'>
+            target="_blank"
+            style={{ color: "#002856", textDecorationLine: "underline" }}
+            href="https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing"
+            className="text-center w-100"
+          >
             View URL Spreadsheet
           </a>
         </div>
@@ -194,22 +199,22 @@ const UrlBuilder = () => {
           <input
             value={baseUrl}
             onChange={(e) => setBaseUrl(e.target.value)}
-            id='baseUrl'
-            placeholder='Paste in the base URL here.'
-            className='form-control'
-            type='text'
+            id="baseUrl"
+            placeholder="Paste in the base URL here."
+            className="form-control"
+            type="text"
           />
-          <small id='url_help' className='form-text text-muted text-center'>
+          <small id="url_help" className="form-text text-muted text-center">
             Copy URL directly from the site then paste here.
           </small>
           <div className={styles.line}></div>
           <input
             value={campaignId}
             onChange={(e) => setCampaignId(e.target.value)}
-            id='campaign_id'
-            placeholder='Campaign ID (UTM Campaign)'
-            className='form-control'
-            type='text'
+            id="campaign_id"
+            placeholder="Campaign ID (UTM Campaign)"
+            className="form-control"
+            type="text"
           />
           <div className={styles.line}></div>
           <Select
@@ -223,26 +228,29 @@ const UrlBuilder = () => {
             value={utmSource}
             onChange={(e) => updateInputs(e)}
             placeholder={<div>UTM Source</div>}
-            options={leadSource.value === 'marketing' ? marketingSourceOptions : (leadSource.value === 'event' ? eventSourceOptions : partnerSourceOptions)}
+            options={
+              leadSource.value === "marketing"
+                ? marketingSourceOptions
+                : leadSource.value === "event"
+                ? eventSourceOptions
+                : partnerSourceOptions
+            }
           />
           <div className={styles.line}></div>
           {showInput ? (
             <input
               value={utmMedium}
               onChange={(e) => setUtmMedium(e.target.value)}
-              placeholder='UTM Medium'
-              className='form-control'
-              type='text'
+              placeholder="UTM Medium"
+              className="form-control"
+              type="text"
             />
-
           ) : (
-
             <Select
               value={utmMedium}
               onChange={(e) => setUtmMedium(e)}
               placeholder={<div>UTM Medium</div>}
               options={mediumOptions}
-
             />
           )}
 
@@ -250,12 +258,12 @@ const UrlBuilder = () => {
           <input
             value={utmContent}
             onChange={(e) => setUtmContent(e.target.value)}
-            id='utm_content'
-            placeholder='UTM Content'
-            className='form-control'
-            type='text'
+            id="utm_content"
+            placeholder="UTM Content"
+            className="form-control"
+            type="text"
           />
-          <small id='content_help' className='form-text text-muted text-center'>
+          <small id="content_help" className="form-text text-muted text-center">
             (optional) – use this to denote variations of the same campaign,
             e.g. video_ad and image_ad
           </small>
@@ -264,37 +272,38 @@ const UrlBuilder = () => {
           <input
             value={campaignName}
             onChange={(e) => setCampaignName(e.target.value)}
-            id='campaign_name'
-            placeholder='Full name of campaign'
-            className='form-control'
-            type='text'
+            id="campaign_name"
+            placeholder="Full name of campaign"
+            className="form-control"
+            type="text"
           />
           <div className={styles.line}></div>
           <input
             value={slashTag}
             onChange={(e) => setSlashTag(e.target.value)}
-            id='slash_tag'
-            placeholder='Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG'
-            className='form-control'
-            type='text'
+            id="slash_tag"
+            placeholder="Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG"
+            className="form-control"
+            type="text"
           />
-          <small id='slash_help' className='form-text text-muted text-center'>
+          <small id="slash_help" className="form-text text-muted text-center">
             No slashes. Only use - and _ when seperating words.
           </small>
           <div className={styles.line}></div>
-          <button onClick={createUrl} className='btn btn-primary w-100'>
+          <button onClick={createUrl} className="btn btn-primary w-100">
             Create URL
           </button>
         </form>
         {shortUrl ? (
           <>
-            <p className='text-center'>Click the link to copy to clipboard.</p>
+            <p className="text-center">Click the link to copy to clipboard.</p>
             <h2
-              style={{ cursor: "pointer", color: "#002856", fontSize: '30px' }}
+              style={{ cursor: "pointer", color: "#002856", fontSize: "30px" }}
               onClick={() => {
                 navigator.clipboard.writeText(shortUrl);
               }}
-              className='text-center'>
+              className="text-center"
+            >
               {shortUrl}
             </h2>
           </>

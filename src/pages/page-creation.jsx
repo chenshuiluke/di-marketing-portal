@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import CreatePageModal from "../components/CreatePageModal";
-import  EngagementPartnersTab from "../components/EngagementPartnersTab";
+import EngagementPartnersTab from "../components/EngagementPartnersTab";
 import AnalyticsPartnerTab from "../components/AnalyticsPartnersTab";
 import BundlePartnersTab from "../components/BundlePartnersTab";
 import * as styles from "./../components/modules/page-creation.module.css";
@@ -23,6 +23,7 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 import axios from "axios";
+import ReportPartnersTab from "../components/ReportPartnersTab";
 
 const PageCreation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +44,7 @@ const PageCreation = () => {
       pageType: baseUrl.label,
     };
 
-    axios.post("https://di-marketing-server-iuzlr.ondigitalocean.app/api/addPartner", body).then((res) => {
+    axios.post("http://localhost:8200/api/addPartner", body).then((res) => {
       console.log(res.data);
 
       if (res.data === "Already exists") {
@@ -64,46 +65,59 @@ const PageCreation = () => {
 
   const reloadPage = () => {
     window.location.reload(false);
-    setAlertOpen(false)
-  }
+    setAlertOpen(false);
+  };
   return (
     <Layout>
       <main>
         <Button
-          className='mb-5'
+          className="mb-5"
           onClick={onOpen}
           _hover={{ bg: "brand.hover" }}
-          bg='brand.main'>
+          bg="brand.main"
+        >
           Create Page
         </Button>
 
-        <Tabs isFitted variant='enclosed'>
-          <TabList mb='1em'>
+        <Tabs isFitted variant="enclosed">
+          <TabList mb="1em">
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
-              className={styles.gp_tab}>
+              className={styles.gp_tab}
+            >
               Engagement
             </Tab>
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
-              className={styles.os_tab}>
+              className={styles.os_tab}
+            >
               Analytics
             </Tab>
             <Tab
-              _focus={{ outline: 0, backgroundColor: "#f2f3f5"}}
-              className={styles.modento_tab}>
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
+              className={styles.os_tab}
+            >
+              Growth Report
+            </Tab>
+            <Tab
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
+              className={styles.modento_tab}
+            >
               Bundle
             </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-             <EngagementPartnersTab/>
+              <EngagementPartnersTab />
             </TabPanel>
             <TabPanel>
-                <AnalyticsPartnerTab/>
+              <AnalyticsPartnerTab />
             </TabPanel>
             <TabPanel>
-              <BundlePartnersTab/>
+              <ReportPartnersTab />
+            </TabPanel>
+            <TabPanel>
+              <BundlePartnersTab />
             </TabPanel>
           </TabPanels>
         </Tabs>
@@ -111,7 +125,8 @@ const PageCreation = () => {
           closeOnOverlayClick={false}
           size={"2xl"}
           isOpen={isOpen}
-          onClose={onClose}>
+          onClose={onClose}
+        >
           <ModalOverlay />
           <CreatePageModal
             createPartner={createPartner}
@@ -132,13 +147,14 @@ const PageCreation = () => {
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader
-                className='text-center'
-                fontSize='lg'
-                fontWeight='bold'>
+                className="text-center"
+                fontSize="lg"
+                fontWeight="bold"
+              >
                 Partner Created
               </AlertDialogHeader>
 
-              <AlertDialogBody className='text-center'>
+              <AlertDialogBody className="text-center">
                 Created link is now copied to your clipboard.
               </AlertDialogBody>
 
@@ -146,8 +162,9 @@ const PageCreation = () => {
                 <Button
                   mt={3}
                   _hover={{ bg: "brand.hover" }}
-                  bg='brand.main'
-                  onClick={reloadPage}>
+                  bg="brand.main"
+                  onClick={reloadPage}
+                >
                   Close
                 </Button>
               </AlertDialogFooter>
