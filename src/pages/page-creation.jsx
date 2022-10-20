@@ -6,6 +6,7 @@ import AnalyticsPartnerTab from "../components/AnalyticsPartnersTab";
 import BundlePartnersTab from "../components/BundlePartnersTab";
 import * as styles from "./../components/modules/page-creation.module.css";
 import { Button } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import {
   Modal,
@@ -22,9 +23,16 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import ReportPartnersTab from "../components/ReportPartnersTab";
-import { toast } from "react-toastify";
+
+const utmMediumMap = {
+  "Bundle (Engagement + Analytics)": "partner_page_dental_intelligence",
+  Analytics: "partner_page_analytics",
+  Engagement: "partner_page_engagement",
+  "Growth Report": "partner_page_growth_report",
+};
 
 const PageCreation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,28 +42,48 @@ const PageCreation = () => {
   const [campaignId, setCampaignId] = useState("");
   const [partnerName, setPartnerName] = useState("");
   const [partnerLogo, setPartnerLogo] = useState("");
-
+  const toast = useToast();
   const createPartner = () => {
     const body = {
       slashTag,
       campaignId,
       partnerName,
       partnerLogo,
-      destinationUrl: `${baseUrl.value}campaign_id=${campaignId}&partner_logo=${partnerLogo}&utm_campaign=${campaignId}`,
+      destinationUrl: `${baseUrl.value}campaign_id=${campaignId}&partner_logo=${partnerLogo}&utm_campaign=${campaignId}&utm_source=partner_referral`,
       pageType: baseUrl.label,
     };
     if (baseUrl != null && (baseUrl.label == "" || baseUrl.label == null)) {
-      return toast.error("Please select a page type");
+      return toast({
+        title: "Please select a page type",
+        status: "warning",
+      });
     }
     if (slashTag == "") {
-      return toast.error("Please enter a tag");
+      return toast({
+        title: "Please enter a tag",
+        status: "warning",
+      });
     }
     if (campaignId == "") {
-      return toast.error("Please enter a tag");
+      return toast({
+        title: "Please enter a campaign id",
+        status: "warning",
+      });
     }
     if (partnerLogo == "") {
-      return toast.error("Please select a partner logo");
+      return toast({
+        title: "Please select a partner logo",
+        status: "warning",
+      });
     }
+    if (partnerName == "") {
+      return toast({
+        title: "Please enter a partner name",
+        status: "warning",
+      });
+    }
+    const utmMedium = utmMediumMap[body.pageType];
+    body.destinationUrl += "&utm_medium=" + utmMedium;
 
     axios
       .post(

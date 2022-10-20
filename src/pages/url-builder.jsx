@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import * as styles from "./../components/modules/url-builder.module.css";
 import Select from "react-select";
 import axios from "axios";
-
 const leadSourceOptions = [
   { value: "marketing", label: "marketing" },
   { value: "event", label: "event" },
@@ -301,7 +300,11 @@ const UrlBuilder = () => {
           <>
             <p className="text-center">Click the link to copy to clipboard.</p>
             <h2
-              style={{ cursor: "pointer", color: "#002856", fontSize: "30px" }}
+              style={{
+                cursor: "pointer",
+                color: "#002856",
+                fontSize: "30px",
+              }}
               onClick={() => {
                 navigator.clipboard.writeText(shortUrl);
               }}
