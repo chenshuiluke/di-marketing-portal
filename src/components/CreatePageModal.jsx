@@ -77,6 +77,7 @@ export default function CreatePageModal(props) {
         <Widget
           onChange={(fileInfo) => props.setPartnerLogo(fileInfo.cdnUrl)}
           publicKey="f40254048b87aa829d5f"
+          inputAcceptTypes=".png"
         />
         <br />
         <small id="slash_help" className="form-text text-muted text-center">
