@@ -82,7 +82,7 @@ export default function CreatePageModal(props) {
         <br />
         <small id="slash_help" className="form-text text-muted text-center">
           <strong>Upload Partner Logo</strong> - Please use a PNG file with a
-          transparent background that is at least [50] x [50] pixels.
+          transparent background that is at least 50 x 50 pixels.
         </small>
       </ModalBody>
       <ModalFooter>
