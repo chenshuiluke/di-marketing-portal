@@ -128,7 +128,7 @@ const PageCreation = () => {
   };
 
   const reloadPage = () => {
-    window.location.reload(false);
+    window.location.href = window.location.href;
     setAlertOpen(false);
   };
   return (
