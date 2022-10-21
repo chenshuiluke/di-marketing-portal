@@ -33,6 +33,14 @@ const partnerSourceOptions = [
   { value: "partner_podcast", label: "partner_podcast" },
   { value: "partner_blog", label: "partner_blog" },
   { value: "partner_referral", label: "partner_referral" },
+  {
+    value: "partner_growth_report",
+    label: "partner_growth_report",
+  },
+  {
+    value: "partner_free_trial",
+    label: "partner_free_trial",
+  },
 ];
 
 const ppcMediumOptions = [
@@ -46,7 +54,7 @@ const ppcMediumOptions = [
 const websiteMediumOptions = [
   { value: "main_website", label: "main_website" },
   { value: "blog", label: "blog" },
-  { value: "chat_bot", label: "capterra" },
+  { value: "chat_bot", label: "chat_bot" },
   { value: "content_landing_page", label: "content_landing_page" },
 ];
 
@@ -62,6 +70,10 @@ const socialMediumOptions = [
   { value: "instagram", label: "instagram" },
   { value: "twitter", label: "twitter" },
   { value: "linkedin", label: "linkedin" },
+  {
+    value: "sponsored_social",
+    label: "sponsored_social",
+  },
 ];
 
 const customerMarketingMediumOptions = [
