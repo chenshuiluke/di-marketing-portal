@@ -33,7 +33,17 @@ const utmMediumMap = {
   Engagement: "partner_page_engagement",
   "Growth Report": "partner_page_growth_report",
 };
-
+const tabIndexMap = {
+  "Bundle (Engagement + Analytics)": 3,
+  Analytics: 1,
+  Engagement: 0,
+  "Growth Report": 2,
+};
+let defaultTab = null;
+if (localStorage.getItem("defaultTabIndex") != null) {
+  defaultTab = parseInt(localStorage.getItem("defaultTabIndex"));
+  localStorage.clear();
+}
 const PageCreation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [alertOpen, setAlertOpen] = useState(false);
@@ -43,6 +53,7 @@ const PageCreation = () => {
   const [partnerName, setPartnerName] = useState("");
   const [partnerLogo, setPartnerLogo] = useState("");
   const toast = useToast();
+
   const createPartner = () => {
     const body = {
       slashTag,
@@ -52,6 +63,7 @@ const PageCreation = () => {
       destinationUrl: `${baseUrl.value}campaign_id=${campaignId}&partner_logo=${partnerLogo}&utm_campaign=${campaignId}&utm_source=partner_referral`,
       pageType: baseUrl.label,
     };
+
     if (baseUrl != null && (baseUrl.label == "" || baseUrl.label == null)) {
       return toast({
         title: "Please select a page type",
@@ -105,6 +117,10 @@ const PageCreation = () => {
           setPartnerLogo("");
           setAlertOpen(true);
           navigator.clipboard.writeText(res.data);
+          window.localStorage.setItem(
+            "defaultTabIndex",
+            tabIndexMap[body.pageType]
+          );
         }
       });
   };
@@ -125,7 +141,7 @@ const PageCreation = () => {
           Create Page
         </Button>
 
-        <Tabs isFitted variant="enclosed">
+        <Tabs isFitted variant="enclosed" defaultIndex={defaultTab}>
           <TabList mb="1em">
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
