@@ -40,9 +40,11 @@ const tabIndexMap = {
   "Growth Report": 2,
 };
 let defaultTab = null;
-if (localStorage.getItem("defaultTabIndex") != null) {
-  defaultTab = parseInt(localStorage.getItem("defaultTabIndex"));
-  localStorage.clear();
+if (typeof window !== "undefined") {
+  if (localStorage.getItem("defaultTabIndex") != null) {
+    defaultTab = parseInt(localStorage.getItem("defaultTabIndex"));
+    localStorage.clear();
+  }
 }
 const PageCreation = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
