@@ -35,7 +35,7 @@ const ReportPartnersTab = () => {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer ref={ref}>
         <Table variant="simple">
           <TableCaption>Growth Report Partner Pages</TableCaption>
           <Thead>

@@ -34,7 +34,7 @@ const BundlePartnersTab = () => {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer ref={ref}>
         <Table variant="simple">
           <TableCaption>Bundle Partner Pages</TableCaption>
           <Thead>
