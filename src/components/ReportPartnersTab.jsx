@@ -29,7 +29,7 @@ const ReportPartnersTab = () => {
       )
       .then((res) => {
         console.log(res.data);
-        setPartners(res.data);
+        setPartners([...res.data]);
       });
   }, [onScreen]);
 
