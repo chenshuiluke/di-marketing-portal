@@ -47,6 +47,7 @@ if (typeof window !== "undefined") {
   }
 }
 const PageCreation = () => {
+  const [tabIndex, setTabIndex] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [alertOpen, setAlertOpen] = useState(false);
   const [baseUrl, setBaseUrl] = useState("");
@@ -55,6 +56,10 @@ const PageCreation = () => {
   const [partnerName, setPartnerName] = useState("");
   const [partnerLogo, setPartnerLogo] = useState("");
   const toast = useToast();
+
+  const handleTabsChange = (index) => {
+    setTabIndex(index);
+  };
 
   const createPartner = () => {
     const body = {
@@ -119,16 +124,16 @@ const PageCreation = () => {
           setPartnerLogo("");
           setAlertOpen(true);
           navigator.clipboard.writeText(res.data);
-          window.localStorage.setItem(
-            "defaultTabIndex",
-            tabIndexMap[body.pageType]
-          );
+          setTabIndex(5);
+          setTimeout(() => {
+            setTabIndex(tabIndexMap[body.pageType]);
+          }, 500);
         }
       });
   };
 
   const reloadPage = () => {
-    window.location.href = window.location.href;
+    // window.location.href = window.location.href;
     setAlertOpen(false);
   };
   return (
@@ -143,7 +148,12 @@ const PageCreation = () => {
           Create Page
         </Button>
 
-        <Tabs isFitted variant="enclosed" defaultIndex={defaultTab}>
+        <Tabs
+          isFitted
+          variant="enclosed"
+          index={tabIndex}
+          onChange={handleTabsChange}
+        >
           <TabList mb="1em">
             <Tab
               _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
