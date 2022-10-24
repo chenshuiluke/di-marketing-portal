@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
   Table,
@@ -12,10 +12,15 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
-
+import useOnScreen from "../hooks/useOnScreen";
 const BundlePartnersTab = () => {
   const [partners, setPartners] = useState(null);
-
+  // Ref for the element that we want to detect whether on screen
+  const ref = useRef();
+  // Call the hook passing in ref and root margin
+  // In this case it would only be considered onScreen if more ...
+  // ... than 300px of element is visible.
+  const onScreen = useOnScreen(ref);
   useEffect(() => {
     axios
       .get(
@@ -25,7 +30,7 @@ const BundlePartnersTab = () => {
         console.log(res.data);
         setPartners(res.data);
       });
-  }, []);
+  }, [onScreen]);
 
   return (
     <>
