@@ -84,6 +84,7 @@ const customerMarketingMediumOptions = [
   { value: "pendo", label: "pendo" },
   { value: "login_page", label: "login_page" },
   { value: "customer_referral", label: "customer_referral" },
+  { value: "customer_content", label: "customer_content" },
 ];
 
 const eventEmailMediumOptions = [
