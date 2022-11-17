@@ -85,6 +85,7 @@ const customerMarketingMediumOptions = [
   { value: "login_page", label: "login_page" },
   { value: "customer_referral", label: "customer_referral" },
   { value: "customer_content", label: "customer_content" },
+  { value: "knowledge_base", label: "knowledge_base" },
 ];
 
 const eventEmailMediumOptions = [
