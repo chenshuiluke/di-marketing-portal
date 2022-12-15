@@ -28,6 +28,10 @@ const pageOptions = [
     value: "https://www.dentalintel.com/partner-page-growth-report?",
     label: "Growth Report",
   },
+  {
+    value: "https://localmed-partners.webflow.io/?",
+    label: "LocalMed",
+  },
 ];
 export default function CreatePageModal(props) {
   return (

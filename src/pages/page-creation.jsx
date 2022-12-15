@@ -26,18 +26,21 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import ReportPartnersTab from "../components/ReportPartnersTab";
+import LocalMedPartnersTab from "../components/LocalMedPartnersTab";
 
 const utmMediumMap = {
   "Bundle (Engagement + Analytics)": "partner_page_dental_intelligence",
   Analytics: "partner_page_analytics",
   Engagement: "partner_page_engagement",
   "Growth Report": "partner_page_growth_report",
+  LocalMed: "partner_page_localmed",
 };
 const tabIndexMap = {
   "Bundle (Engagement + Analytics)": 3,
   Analytics: 1,
   Engagement: 0,
   "Growth Report": 2,
+  LocalMed: 4,
 };
 let defaultTab = null;
 if (typeof window !== "undefined") {
@@ -179,6 +182,12 @@ const PageCreation = () => {
             >
               Bundle
             </Tab>
+            <Tab
+              _focus={{ outline: 0, backgroundColor: "#f2f3f5" }}
+              className={styles.os_tab}
+            >
+              LocalMed
+            </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -192,6 +201,9 @@ const PageCreation = () => {
             </TabPanel>
             <TabPanel>
               <BundlePartnersTab />
+            </TabPanel>
+            <TabPanel>
+              <LocalMedPartnersTab />
             </TabPanel>
           </TabPanels>
         </Tabs>
