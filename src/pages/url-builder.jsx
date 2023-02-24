@@ -17,7 +17,7 @@ const marketingSourceOptions = [
   { value: "customer_marketing", label: "customer_marketing" },
   { value: "podcast", label: "podcast" },
   { value: "webinar", label: "webinar" },
-  { value: "content_download", label: "content_download" },
+  { value: "content", label: "content" },
 ];
 
 const eventSourceOptions = [
@@ -59,7 +59,10 @@ const websiteMediumOptions = [
   { value: "content_landing_page", label: "content_landing_page" },
 ];
 
-const contentDownloadMediumOptions = [{ value: "ebook", label: "ebook" }];
+const contentDownloadMediumOptions = [
+  { value: "ebook", label: "ebook" },
+  { value: "press_release", label: "press_release" },
+];
 
 const emailMediumOptions = [
   { value: "paid_email", label: "paid_email" },
@@ -152,7 +155,7 @@ const UrlBuilder = () => {
     } else if (sourceSelection.value === "website") {
       setMediumOptions(websiteMediumOptions);
       setShowInput(false);
-    } else if (sourceSelection.value === "content_download") {
+    } else if (sourceSelection.value === "content") {
       setMediumOptions(contentDownloadMediumOptions);
       setShowInput(false);
     } else if (sourceSelection.value === "email") {
