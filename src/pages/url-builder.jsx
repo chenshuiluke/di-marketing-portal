@@ -18,6 +18,7 @@ const marketingSourceOptions = [
   { value: "podcast", label: "podcast" },
   { value: "webinar", label: "webinar" },
   { value: "content", label: "content" },
+  { value: "in_product", label: "in_product" },
 ];
 
 const eventSourceOptions = [
@@ -91,6 +92,14 @@ const customerMarketingMediumOptions = [
   { value: "knowledge_base", label: "knowledge_base" },
   { value: "customer_community", label: "customer_community" },
   { value: "userflow", label: "userflow" },
+];
+
+const inProductMarketingMediumOptions = [
+  { value: "analytics", label: "analytics" },
+  { value: "engagement", label: "engagement" },
+  { value: "insurance", label: "insurance" },
+  { value: "analytics_lite", label: "analytics_lite" },
+  { value: "engagement_lite", label: "engagement_lite" },
 ];
 
 const eventEmailMediumOptions = [
@@ -192,6 +201,9 @@ const UrlBuilder = () => {
       setShowInput(true);
     } else if (sourceSelection.label === "partner_referral") {
       setShowInput(true);
+    } else if (sourceSelection.label === "in_product") {
+      setMediumOptions(inProductMarketingMediumOptions);
+      setShowInput(false);
     }
   };
 
