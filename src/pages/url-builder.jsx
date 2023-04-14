@@ -26,6 +26,7 @@ const eventSourceOptions = [
   { value: "event_social_media", label: "event_social_media" },
   { value: "event_demo", label: "event_demo" },
   { value: "event_raffle", label: "event_raffle" },
+  { value: "event_landing_page", label: "event_landing_page" },
 ];
 
 const partnerSourceOptions = [
@@ -186,6 +187,8 @@ const UrlBuilder = () => {
     } else if (sourceSelection.label === "event_social_media") {
       setShowInput(true);
     } else if (sourceSelection.label === "event_demo") {
+      setShowInput(true);
+    } else if (sourceSelection.label === "event_landing_page") {
       setShowInput(true);
     } else if (sourceSelection.label === "event_raffle") {
       setShowInput(true);
