@@ -93,6 +93,7 @@ const customerMarketingMediumOptions = [
   { value: "knowledge_base", label: "knowledge_base" },
   { value: "customer_community", label: "customer_community" },
   { value: "userflow", label: "userflow" },
+  { value: "intellicon", label: "intellicon" },
 ];
 
 const inProductMarketingMediumOptions = [
