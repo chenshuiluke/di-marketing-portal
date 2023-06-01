@@ -206,6 +206,8 @@ const UrlBuilder = () => {
       setShowInput(true);
     } else if (sourceSelection.label === "partner_referral") {
       setShowInput(true);
+    } else if (sourceSelection.label === "ae_referral") {
+      setShowInput(true);
     } else if (sourceSelection.label === "in_product") {
       setMediumOptions(inProductMarketingMediumOptions);
       setShowInput(false);
