@@ -19,6 +19,7 @@ const marketingSourceOptions = [
   { value: "webinar", label: "webinar" },
   { value: "content", label: "content" },
   { value: "in_product", label: "in_product" },
+  { value: "ae_referral", label: "ae_referral" },
 ];
 
 const eventSourceOptions = [
