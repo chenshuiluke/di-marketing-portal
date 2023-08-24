@@ -7,6 +7,7 @@ const leadSourceOptions = [
   { value: "marketing", label: "marketing" },
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
+  { value: "education", label: "education" },
 ];
 
 const marketingSourceOptions = [
@@ -28,6 +29,10 @@ const eventSourceOptions = [
   { value: "event_demo", label: "event_demo" },
   { value: "event_raffle", label: "event_raffle" },
   { value: "event_landing_page", label: "event_landing_page" },
+];
+
+const educationSourceOptions = [
+  { value: "education_content", label: "education_content" },
 ];
 
 const partnerSourceOptions = [
@@ -95,6 +100,13 @@ const customerMarketingMediumOptions = [
   { value: "customer_community", label: "customer_community" },
   { value: "userflow", label: "userflow" },
   { value: "intellicon", label: "intellicon" },
+];
+
+const educationMediumOptions = [
+  { value: "knowledge_base", label: "knowledge_base" },
+  { value: "customer_communiy", label: "customer_community" },
+  { value: "userflow", label: "userflow" },
+  { value: "webinar", label: "webinar" },
 ];
 
 const inProductMarketingMediumOptions = [
@@ -211,6 +223,9 @@ const UrlBuilder = () => {
     } else if (sourceSelection.label === "in_product") {
       setMediumOptions(inProductMarketingMediumOptions);
       setShowInput(false);
+    } else if (sourceSelection.label === "education_content") {
+      setMediumOptions(educationMediumOptions);
+      setShowInput(false);
     }
   };
 
@@ -265,7 +280,9 @@ const UrlBuilder = () => {
           <div className={styles.line}></div>
           <Select
             value={leadSource}
-            onChange={(e) => setLeadSource(e)}
+            onChange={(e) => {
+              setLeadSource(e);
+            }}
             placeholder={<div>Lead Source</div>}
             options={leadSourceOptions}
           />
@@ -279,6 +296,8 @@ const UrlBuilder = () => {
                 ? marketingSourceOptions
                 : leadSource.value === "event"
                 ? eventSourceOptions
+                : leadSource.value === "education"
+                ? educationSourceOptions
                 : partnerSourceOptions
             }
           />
