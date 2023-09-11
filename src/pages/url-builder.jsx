@@ -238,7 +238,7 @@ const UrlBuilder = () => {
         >
           Marketing URL Builder
         </h1>
-        {/* <div className="d-flex justify-content-center mb-4 flex-column">
+        <div className="d-flex justify-content-center mb-4 flex-column">
           <a
             target="_blank"
             style={{ color: "#002856", textDecorationLine: "underline" }}
@@ -247,15 +247,15 @@ const UrlBuilder = () => {
           >
             View parameter instructions before creating a link
           </a>
-          <a
+          {/* <a
             target="_blank"
             style={{ color: "#002856", textDecorationLine: "underline" }}
             href="https://docs.google.com/spreadsheets/d/16_nNIZe4jvkwy5Qsw76IMxf040Z0piMq8_mTeeOZnDk/edit?usp=sharing"
             className="text-center w-100"
           >
             View URL Spreadsheet
-          </a>
-        </div> */}
+          </a> */}
+        </div>
         <form className={styles.form}>
           <input
             value={baseUrl}
