@@ -238,7 +238,7 @@ const UrlBuilder = () => {
         >
           Marketing URL Builder
         </h1>
-        <div className="d-flex justify-content-center mb-4 flex-column">
+        {/* <div className="d-flex justify-content-center mb-4 flex-column">
           <a
             target="_blank"
             style={{ color: "#002856", textDecorationLine: "underline" }}
@@ -255,7 +255,7 @@ const UrlBuilder = () => {
           >
             View URL Spreadsheet
           </a>
-        </div>
+        </div> */}
         <form className={styles.form}>
           <input
             value={baseUrl}
