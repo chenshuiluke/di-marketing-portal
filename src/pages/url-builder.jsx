@@ -287,42 +287,42 @@ const UrlBuilder = () => {
     } else if (
       sourceSelection.value === "website" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(partnerWebsiteMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.value === "email" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(partnerEmailMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.label === "social_media" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(socialMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.label === "webinar" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(partnerWebinarMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.label === "content" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(partnerContentMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.label === "in_product" &&
       (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_programr")
+        leadSource.value == "customer_connect_program")
     ) {
       setMediumOptions(partnerInProductMediumOptions);
       setShowInput(false);
