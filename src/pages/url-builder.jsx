@@ -8,6 +8,7 @@ const leadSourceOptions = [
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
   { value: "education", label: "education" },
+  { value: "customer_connect_program", label: "customer_connect_program" },
 ];
 
 const marketingSourceOptions = [
@@ -24,11 +25,13 @@ const marketingSourceOptions = [
 ];
 
 const eventSourceOptions = [
-  { value: "event_email", label: "event_email" },
-  { value: "event_social_media", label: "event_social_media" },
-  { value: "event_demo", label: "event_demo" },
-  { value: "event_raffle", label: "event_raffle" },
-  { value: "event_landing_page", label: "event_landing_page" },
+  { value: "website", label: "website" },
+  { value: "email", label: "email" },
+  { value: "social_media", label: "social_media" },
+  {
+    value: "event_list",
+    label: "event_list",
+  },
 ];
 
 const educationSourceOptions = [
@@ -36,20 +39,23 @@ const educationSourceOptions = [
 ];
 
 const partnerSourceOptions = [
-  { value: "partner_social_media", label: "partner_social_media" },
-  { value: "partner_email", label: "partner_email" },
-  { value: "partner_webinar", label: "partner_webinar" },
-  { value: "partner_podcast", label: "partner_podcast" },
-  { value: "partner_blog", label: "partner_blog" },
-  { value: "partner_referral", label: "partner_referral" },
-  {
-    value: "partner_growth_report",
-    label: "partner_growth_report",
-  },
-  {
-    value: "partner_free_trial",
-    label: "partner_free_trial",
-  },
+  { value: "website", label: "website" },
+  { value: "email", label: "email" },
+  { value: "webinar", label: "webinar" },
+  { value: "podcast", label: "podcast" },
+  { value: "social_media", label: "social_media" },
+  { value: "content", label: "content" },
+  { value: "in_product", label: "in_product" },
+  // { value: "partner_blog", label: "partner_blog" },
+  // { value: "partner_referral", label: "partner_referral" },
+  // {
+  //   value: "partner_growth_report",
+  //   label: "partner_growth_report",
+  // },
+  // {
+  //   value: "partner_free_trial",
+  //   label: "partner_free_trial",
+  // },
 ];
 
 const ppcMediumOptions = [
@@ -65,6 +71,7 @@ const websiteMediumOptions = [
   { value: "blog", label: "blog" },
   { value: "chat_bot", label: "chat_bot" },
   { value: "content_landing_page", label: "content_landing_page" },
+  { value: "series_title", label: "series_title" },
 ];
 
 const contentDownloadMediumOptions = [
@@ -75,6 +82,7 @@ const contentDownloadMediumOptions = [
 const emailMediumOptions = [
   { value: "paid_email", label: "paid_email" },
   { value: "marketing_email", label: "marketing_email" },
+  { value: "customer_email", label: "customer_email" },
 ];
 
 const socialMediumOptions = [
@@ -88,6 +96,74 @@ const socialMediumOptions = [
     value: "sponsored_social",
     label: "sponsored_social",
   },
+];
+
+const eventSocialMediumOptions = [
+  { value: "facebook", label: "facebook" },
+  { value: "instagram", label: "instagram" },
+  { value: "twitter", label: "twitter" },
+  { value: "linkedin", label: "linkedin" },
+];
+
+const partnerEmailMediumOptions = [
+  {
+    value: "paid_email",
+    label: "paid_email",
+  },
+  {
+    value: "marketing_email",
+    label: "marketing_email",
+  },
+  {
+    value: "customer_email",
+    label: "customer_email",
+  },
+];
+
+const partnerWebsiteMediumOptions = [
+  {
+    value: "main_website",
+    label: "main_website",
+  },
+  {
+    value: "blog",
+    label: "blog",
+  },
+  {
+    value: "chat_bot",
+    label: "chat_bot",
+  },
+  {
+    value: "partner_landing_page",
+    label: "partner_landing_page",
+  },
+  {
+    value: "partner_portal",
+    label: "partner_portal",
+  },
+];
+
+const partnerContentMediumOptions = [
+  { value: "ebook", label: "ebook" },
+  { value: "press_release", label: "press_release" },
+];
+
+const partnerInProductMediumOptions = [
+  { value: "pendo", label: "pendo" },
+  { value: "login_page", label: "login_page" },
+  { value: "analytics", label: "analytics" },
+  { value: "engagement", label: "engagement" },
+  { value: "analytics_lite", label: "analytics_lite" },
+  { value: "engagement_lite", label: "engagement_lite" },
+];
+
+const partnerWebinarMediumOptions = [
+  { value: "series_title", label: "series_title" },
+];
+const eventEventListMediumOptions = [
+  { value: "attendee", label: "attendee" },
+  { value: "engaged", label: "engaged" },
+  { value: "demoed", label: "demoed" },
 ];
 
 const customerMarketingMediumOptions = [
@@ -115,11 +191,18 @@ const inProductMarketingMediumOptions = [
   { value: "insurance", label: "insurance" },
   { value: "analytics_lite", label: "analytics_lite" },
   { value: "engagement_lite", label: "engagement_lite" },
+  { value: "pendo", label: "pendo" },
+  { value: "login_page", value: "login_page" },
 ];
 
 const eventEmailMediumOptions = [
   { value: "pre_event_email", label: "pre_event_email" },
   { value: "post_event_email", label: "post_event_email" },
+];
+
+const eventWebsiteMediumOptions = [
+  { value: "chat_bot", label: "chat_bot" },
+  { value: "event_landing_page", label: "event_landing_page" },
 ];
 
 const UrlBuilder = () => {
@@ -173,8 +256,75 @@ const UrlBuilder = () => {
   const updateInputs = (sourceSelection) => {
     setUtmSource(sourceSelection);
     setUtmMedium(null);
+    debugger;
     if (sourceSelection.value === "ppc") {
       setMediumOptions(ppcMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.value === "website" &&
+      leadSource.value == "event"
+    ) {
+      setMediumOptions(eventWebsiteMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.value === "email" &&
+      leadSource.value == "event"
+    ) {
+      setMediumOptions(eventEmailMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "social_media" &&
+      leadSource.value == "event"
+    ) {
+      setMediumOptions(eventSocialMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "event_list" &&
+      leadSource.value == "event"
+    ) {
+      setMediumOptions(eventEventListMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.value === "website" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(partnerWebsiteMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.value === "email" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(partnerEmailMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "social_media" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(socialMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "webinar" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(partnerWebinarMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "content" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(partnerContentMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.label === "in_product" &&
+      (leadSource.value == "partner" ||
+        leadSource.value == "customer_connect_programr")
+    ) {
+      setMediumOptions(partnerInProductMediumOptions);
       setShowInput(false);
     } else if (sourceSelection.value === "website") {
       setMediumOptions(websiteMediumOptions);
@@ -191,32 +341,15 @@ const UrlBuilder = () => {
     } else if (sourceSelection.value === "customer_marketing") {
       setMediumOptions(customerMarketingMediumOptions);
       setShowInput(false);
-    } else if (sourceSelection.value === "event_email") {
-      setMediumOptions(eventEmailMediumOptions);
-      setShowInput(false);
     } else if (sourceSelection.label === "podcast") {
       setShowInput(true);
     } else if (sourceSelection.label === "webinar") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "event_social_media") {
       setShowInput(true);
     } else if (sourceSelection.label === "event_demo") {
       setShowInput(true);
     } else if (sourceSelection.label === "event_landing_page") {
       setShowInput(true);
     } else if (sourceSelection.label === "event_raffle") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_social_media") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_email") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_webinar") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_podcast") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_blog") {
-      setShowInput(true);
-    } else if (sourceSelection.label === "partner_referral") {
       setShowInput(true);
     } else if (sourceSelection.label === "ae_referral") {
       setShowInput(true);
