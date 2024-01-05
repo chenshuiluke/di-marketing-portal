@@ -16,7 +16,7 @@ const marketingSourceOptions = [
   { value: "website", label: "website" },
   { value: "email", label: "email" },
   { value: "social_media", label: "social_media" },
-  { value: "customer_marketing", label: "customer_marketing" },
+  // { value: "customer_marketing", label: "customer_marketing" },
   { value: "podcast", label: "podcast" },
   { value: "webinar", label: "webinar" },
   { value: "content", label: "content" },
@@ -71,7 +71,7 @@ const websiteMediumOptions = [
   { value: "blog", label: "blog" },
   { value: "chat_bot", label: "chat_bot" },
   { value: "content_landing_page", label: "content_landing_page" },
-  { value: "series_title", label: "series_title" },
+  // { value: "series_title", label: "series_title" },
 ];
 
 const contentDownloadMediumOptions = [
@@ -143,6 +143,25 @@ const partnerWebsiteMediumOptions = [
   },
 ];
 
+const customerConnectWebsiteMediumOptions = [
+  {
+    value: "main_website",
+    label: "main_website",
+  },
+  {
+    value: "blog",
+    label: "blog",
+  },
+  {
+    value: "chat_bot",
+    label: "chat_bot",
+  },
+  {
+    value: "content_landing_page",
+    label: "content_landing_page",
+  },
+];
+
 const partnerContentMediumOptions = [
   { value: "ebook", label: "ebook" },
   { value: "press_release", label: "press_release" },
@@ -192,7 +211,7 @@ const inProductMarketingMediumOptions = [
   { value: "analytics_lite", label: "analytics_lite" },
   { value: "engagement_lite", label: "engagement_lite" },
   { value: "pendo", label: "pendo" },
-  { value: "login_page", value: "login_page" },
+  { value: "login_page", label: "login_page" },
 ];
 
 const eventEmailMediumOptions = [
@@ -286,10 +305,15 @@ const UrlBuilder = () => {
       setShowInput(false);
     } else if (
       sourceSelection.value === "website" &&
-      (leadSource.value == "partner" ||
-        leadSource.value == "customer_connect_program")
+      leadSource.value == "partner"
     ) {
       setMediumOptions(partnerWebsiteMediumOptions);
+      setShowInput(false);
+    } else if (
+      sourceSelection.value === "website" &&
+      leadSource.value == "customer_connect_program"
+    ) {
+      setMediumOptions(customerConnectWebsiteMediumOptions);
       setShowInput(false);
     } else if (
       sourceSelection.value === "email" &&
@@ -310,8 +334,8 @@ const UrlBuilder = () => {
       (leadSource.value == "partner" ||
         leadSource.value == "customer_connect_program")
     ) {
-      setMediumOptions(partnerWebinarMediumOptions);
-      setShowInput(false);
+      // setMediumOptions(partnerWebinarMediumOptions);
+      setShowInput(true);
     } else if (
       sourceSelection.label === "content" &&
       (leadSource.value == "partner" ||
@@ -375,7 +399,7 @@ const UrlBuilder = () => {
           <a
             target="_blank"
             style={{ color: "#002856", textDecorationLine: "underline" }}
-            href="https://docs.google.com/spreadsheets/d/1AOXYoct0hutM_mmnRHer5MWXBF8-4BJDG6-bnWPbXdU/edit#gid=0"
+            href="https://dentalintel10-my.sharepoint.com/:x:/g/personal/kkaufman_dentalintel_com/EcMKLyGbr4dKsGut6Zg4PG4BqqX3z67nha-8BTDaE9v5KA?e=jZn65O"
             className="text-center w-100"
           >
             View parameter instructions before creating a link
