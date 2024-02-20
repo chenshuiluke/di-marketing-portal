@@ -54,7 +54,7 @@ export default function CreatePageModal(props) {
           value={props.slashTag}
           onChange={(e) => props.setSlashTag(e.target.value)}
           className="form-control mt-3"
-          placeholder="Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG"
+          placeholder="Slash Tag - e.g. info.dentalintel.com/THIS-IS-A-SLASH-TAG"
           type="text"
         />
         <small id="slash_help" className="form-text text-muted text-center">
