@@ -504,7 +504,7 @@ const UrlBuilder = () => {
             value={slashTag}
             onChange={(e) => setSlashTag(e.target.value)}
             id="slash_tag"
-            placeholder="Slash Tag - e.g. get.dentalintel.com/THIS-IS-A-SLASH-TAG"
+            placeholder="Slash Tag - e.g. info.dentalintel.com/THIS-IS-A-SLASH-TAG"
             className="form-control"
             type="text"
           />
