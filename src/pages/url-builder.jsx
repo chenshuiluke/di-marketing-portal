@@ -32,6 +32,10 @@ const eventSourceOptions = [
     value: "event_list",
     label: "event_list",
   },
+  {
+    value: "sponsored_speaker",
+    label: "sponsored_speaker",
+  },
 ];
 
 const educationSourceOptions = [
@@ -212,6 +216,7 @@ const inProductMarketingMediumOptions = [
   { value: "engagement_lite", label: "engagement_lite" },
   { value: "pendo", label: "pendo" },
   { value: "login_page", label: "login_page" },
+  { value: "userflow", label: "userflow" },
 ];
 
 const eventEmailMediumOptions = [
