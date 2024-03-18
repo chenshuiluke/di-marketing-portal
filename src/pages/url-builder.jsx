@@ -281,7 +281,9 @@ const UrlBuilder = () => {
     setUtmSource(sourceSelection);
     setUtmMedium(null);
     debugger;
-    if (sourceSelection.value === "ppc") {
+    if (sourceSelection.value === "sponsored_speaker") {
+      setShowInput(true);
+    } else if (sourceSelection.value === "ppc") {
       setMediumOptions(ppcMediumOptions);
       setShowInput(false);
     } else if (
