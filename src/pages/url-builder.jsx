@@ -64,7 +64,7 @@ const partnerSourceOptions = [
 
 const ppcMediumOptions = [
   { value: "google", label: "google" },
-  { value: "bing", label: "bing" },
+  { value: "microsoft_ads", label: "microsoft_ads" },
   { value: "capterra", label: "capterra" },
   { value: "g2", label: "g2" },
   { value: "sourceforge", label: "sourceforge" },
