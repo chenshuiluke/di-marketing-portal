@@ -9,6 +9,16 @@ const leadSourceOptions = [
   { value: "partner", label: "partner" },
   { value: "education", label: "education" },
   { value: "customer_connect_program", label: "customer_connect_program" },
+  { value: "customer_success", label: "customer_success" },
+];
+
+const customerSuccessSourceOptions = [
+  { value: "userflow", label: "userflow" },
+  { value: "pendo", label: "pendo" },
+  { value: "webinar", label: "webinar" },
+  { value: "support_referral", label: "support_referral" },
+  { value: "moto_minute_tip_tuesday", label: "moto_minute_tip_tuesday" },
+  { value: "knowledge_base", label: "knowledge_base" },
 ];
 
 const marketingSourceOptions = [
@@ -283,6 +293,8 @@ const UrlBuilder = () => {
     debugger;
     if (sourceSelection.value === "sponsored_speaker") {
       setShowInput(true);
+    } else if (leadSource.value === "customer_success") {
+      setShowInput(true);
     } else if (sourceSelection.value === "ppc") {
       setMediumOptions(ppcMediumOptions);
       setShowInput(false);
@@ -462,6 +474,8 @@ const UrlBuilder = () => {
                 ? eventSourceOptions
                 : leadSource.value === "education"
                 ? educationSourceOptions
+                : leadSource.value === "customer_success"
+                ? customerSuccessSourceOptions
                 : partnerSourceOptions
             }
           />
