@@ -7,7 +7,6 @@ const leadSourceOptions = [
   { value: "marketing", label: "marketing" },
   { value: "event", label: "event" },
   { value: "partner", label: "partner" },
-  { value: "education", label: "education" },
   { value: "customer_connect_program", label: "customer_connect_program" },
   { value: "customer_success", label: "customer_success" },
 ];
