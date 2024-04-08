@@ -510,7 +510,7 @@ const UrlBuilder = () => {
             e.g. video_ad and image_ad
           </small>
 
-          <div className={styles.line}></div>
+          {/* <div className={styles.line}></div>
           <input
             value={campaignName}
             onChange={(e) => setCampaignName(e.target.value)}
@@ -518,7 +518,7 @@ const UrlBuilder = () => {
             placeholder="Full name of campaign"
             className="form-control"
             type="text"
-          />
+          /> */}
           <div className={styles.line}></div>
           <input
             value={slashTag}
