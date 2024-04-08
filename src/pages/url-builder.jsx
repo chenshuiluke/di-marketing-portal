@@ -505,10 +505,6 @@ const UrlBuilder = () => {
             className="form-control"
             type="text"
           />
-          <small id="content_help" className="form-text text-muted text-center">
-            (optional) – use this to denote variations of the same campaign,
-            e.g. video_ad and image_ad
-          </small>
 
           {/* <div className={styles.line}></div>
           <input
@@ -529,7 +525,9 @@ const UrlBuilder = () => {
             type="text"
           />
           <small id="slash_help" className="form-text text-muted text-center">
-            No slashes. Only use - and _ when seperating words.
+            OPTIONAL (leave blank to randomly generate a slash tag). Do not
+            include slashes. Use all lowercase letters. Separate words with
+            underscores.
           </small>
           <div className={styles.line}></div>
           <button onClick={createUrl} className="btn btn-primary w-100">
