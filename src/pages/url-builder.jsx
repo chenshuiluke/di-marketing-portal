@@ -12,6 +12,10 @@ const leadSourceOptions = [
 ];
 
 const customerSuccessSourceOptions = [
+  { value: "customer_success", label: "customer_success" },
+];
+
+const customerSuccessMediumOptions = [
   { value: "userflow", label: "userflow" },
   { value: "pendo", label: "pendo" },
   { value: "webinar", label: "webinar" },
@@ -293,7 +297,8 @@ const UrlBuilder = () => {
     if (sourceSelection.value === "sponsored_speaker") {
       setShowInput(true);
     } else if (leadSource.value === "customer_success") {
-      setShowInput(true);
+      setMediumOptions(customerSuccessMediumOptions);
+      setShowInput(false);
     } else if (sourceSelection.value === "ppc") {
       setMediumOptions(ppcMediumOptions);
       setShowInput(false);
