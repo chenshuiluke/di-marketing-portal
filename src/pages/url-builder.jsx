@@ -35,6 +35,7 @@ const marketingSourceOptions = [
   { value: "content", label: "content" },
   { value: "in_product", label: "in_product" },
   { value: "ae_referral", label: "ae_referral" },
+  { value: "abm", label: "abm" },
 ];
 
 const eventSourceOptions = [
@@ -221,6 +222,8 @@ const educationMediumOptions = [
   { value: "webinar", label: "webinar" },
 ];
 
+const abmMediumOptions = [{ value: "direct_mail", label: "direct_mail" }];
+
 const inProductMarketingMediumOptions = [
   { value: "analytics", label: "analytics" },
   { value: "engagement", label: "engagement" },
@@ -248,6 +251,7 @@ const UrlBuilder = () => {
   const [utmSource, setUtmSource] = useState([]);
   const [utmMedium, setUtmMedium] = useState([]);
   const [utmContent, setUtmContent] = useState("");
+  const [promoCode, setPromoCode] = useState("");
   const [campaignName, setCampaignName] = useState("");
   const [slashTag, setSlashTag] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -263,7 +267,7 @@ const UrlBuilder = () => {
         leadSource.value
       }&utm_source=${utmSource.value}&utm_medium=${
         utmMedium.value ? utmMedium.value : utmMedium
-      }&utm_content=${utmContent}&utm_campaign=${campaignId}`,
+      }&utm_content=${utmContent}&utm_campaign=${campaignId}&promo_code=${promoCode}`,
       campaignName,
       utmContent,
     };
@@ -406,6 +410,9 @@ const UrlBuilder = () => {
     } else if (sourceSelection.label === "education_content") {
       setMediumOptions(educationMediumOptions);
       setShowInput(false);
+    } else if (sourceSelection.label === "abm") {
+      setMediumOptions(abmMediumOptions);
+      setShowInput(false);
     }
   };
 
@@ -507,6 +514,15 @@ const UrlBuilder = () => {
             onChange={(e) => setUtmContent(e.target.value)}
             id="utm_content"
             placeholder="UTM Content"
+            className="form-control"
+            type="text"
+          />
+          <div className={styles.line}></div>
+          <input
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+            id="promo_code"
+            placeholder="Promo Code"
             className="form-control"
             type="text"
           />
