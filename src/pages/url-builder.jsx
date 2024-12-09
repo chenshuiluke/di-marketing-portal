@@ -111,8 +111,12 @@ const socialMediumOptions = [
   { value: "twitter", label: "twitter" },
   { value: "linkedin", label: "linkedin" },
   {
-    value: "sponsored_social",
-    label: "sponsored_social",
+    value: "tiktok",
+    label: "tiktok",
+  },
+  {
+    value: "tiktok_ads",
+    label: "tiktok_ads",
   },
 ];
 
