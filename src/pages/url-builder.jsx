@@ -277,7 +277,7 @@ const UrlBuilder = () => {
     };
     axios
       .post(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/shortenUrl",
+        "https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/shortenUrl",
         body
       )
       .then((res) => {
