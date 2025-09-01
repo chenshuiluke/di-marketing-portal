@@ -109,7 +109,7 @@ const PageCreation = () => {
 
     axios
       .post(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/addPartner",
+        "https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/addPartner",
         body
       )
       .then((res) => {

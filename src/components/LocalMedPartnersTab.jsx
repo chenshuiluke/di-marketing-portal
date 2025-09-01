@@ -25,7 +25,7 @@ const LocalMedPartnersTab = () => {
   useEffect(() => {
     axios
       .get(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/getLocalMedPartners"
+        "https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/getLocalMedPartners"
       )
       .then((res) => {
         console.log(res.data);

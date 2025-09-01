@@ -24,7 +24,7 @@ const BundlePartnersTab = () => {
   useEffect(() => {
     axios
       .get(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/getBundlePartners"
+        "https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/getBundlePartners"
       )
       .then((res) => {
         console.log(res.data);

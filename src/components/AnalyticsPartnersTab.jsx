@@ -25,7 +25,7 @@ const OSPartnersTab = () => {
   useEffect(() => {
     axios
       .get(
-        "https://di-marketing-server-iuzlr.ondigitalocean.app/api/getAnalyticsPartners"
+        "https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/getAnalyticsPartners"
       )
       .then((res) => {
         console.log(res.data);
