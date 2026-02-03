@@ -575,6 +575,7 @@ const UrlBuilder = () => {
             >
               {shortUrl}
             </h2>
+            <img src={`${shortUrl}.qr?type=svg`}/>
           </>
         ) : null}
       </main>
