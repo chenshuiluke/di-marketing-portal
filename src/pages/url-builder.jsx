@@ -575,7 +575,12 @@ const UrlBuilder = () => {
             >
               {shortUrl}
             </h2>
-            <object data={`${shortUrl}.qr?type=svg`} type="image/svg+xml" />
+            <object
+              data={`https://di-marketing-server-api-ds7gl.ondigitalocean.app/api/qr-code-svg?url=${encodeURIComponent(
+                `${shortUrl}.qr`
+              )}`}
+              type="image/svg+xml"
+            />
           </>
         ) : null}
       </main>
